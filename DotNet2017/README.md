@@ -4,3 +4,22 @@
 ```bash
 ln -s /usr/local/share/dotnet/dotnet /usr/local/bin/
 ```
+
+Create a new ASP.Net Core app
+```bash
+dotnet new razor -o aspnetcoreapp
+```
+
+Publish the artifacts
+```bash
+dotnet publish -c Release -o releaseOutput
+```
+Build the docker image
+```bash
+docker build -t aspnetcoreapp .
+```
+
+Run the container 
+```bash
+docker run -d -p 8080:8080 aspnetcoreapp
+```
