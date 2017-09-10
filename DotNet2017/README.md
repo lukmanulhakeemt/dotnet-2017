@@ -15,11 +15,11 @@ Publish the artifacts
 dotnet publish -c Release -o releaseOutput
 ```
 Build the docker image
-```bash
+```bash 
 docker build -t aspnetcoreapp .
 ```
 
 Run the container 
 ```bash
-docker run -d -p 8080:8080 aspnetcoreapp
+docker run -d -p 8000:8000 aspnetcoreapp
 ```
