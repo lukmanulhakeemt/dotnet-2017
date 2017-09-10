@@ -23,3 +23,6 @@ Run the container
 ```bash
 docker run -d -p 8000:8000 aspnetcoreapp
 ```
+
+### Verify application is running fine by navigating to the following link in the browser
+`http://localhost:8000`
