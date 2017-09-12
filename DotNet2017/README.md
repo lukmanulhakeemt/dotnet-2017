@@ -38,5 +38,5 @@ $ docker inspect -f '{{.Name}} - {{.NetworkSettings.IPAddress }}' $(docker ps -a
 ```
 ##### RUN a docker image with a friendly "container" name
 ```docker
-$ docker run --name **friendly-container-name** **docker-image-name**
+$ docker run --name friendly-container-name docker-image-name
 ```
