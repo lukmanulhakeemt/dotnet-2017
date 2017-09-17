@@ -13,11 +13,22 @@
     </div>
     <div class="col-md-4">
         <h2>Search</h2>
-        <div>
-            <span>Enter a keyword</span>
-            <input type="text" id="keyword" size="20" />
-            <div><input type="button" id="search" value="Search" /></div>
+        <div class="input-group">
+            <span class="input-group-addon">Keyword:</span>
+            <input id="keyword" type="text" class="form-control" name="keyword" placeholder="Enter a keyword">
         </div>
+        <div class="input-group">
+            <span class="input-group-addon">Service:</span>
+            <input id="svcUrl" type="text" class="form-control" name="svcUrl" placeholder="Enter Service Url">
+        </div>
+        <div class="input-group">
+            <div class="pull-right">
+                <button type="submit" id="searchLocal" class="btn btn-primary" onclick="javascript: localSearchValue();">Search Local</button>
+                <button type="submit" id="searchService" class="btn btn-warning" onclick="javascript: serviceSearchValue();">Search Service</button>
+            </div>
+        </div>
+        <div id="LocalSearchResult"></div>
+        <div id="ServiceSearchResult"></div>
     </div>
     <div class="col-md-4">
         <h2>Search data-source</h2>
@@ -92,3 +103,17 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
+<script type="text/javascript">
+    var localSearchurl = '@Url.Action("DisplayLocalSearchResult", "Home")';
+    var svcSearchurl = '@Url.Action("DisplayServiceSearchResult", "Home")';
+    function localSearchValue() {
+        var keyWord = $('#keyword').val();
+        $('#LocalSearchResult').load(localSearchurl, { searchText: keyWord });
+    }
+    function serviceSearchValue() {
+        var keyWord = $('#keyword').val();
+        var svcUrl = $('#svcUrl').val();
+        $('#ServiceSearchResult').load(svcSearchurl, { searchText: keyWord, serviceUrl: svcUrl });
+    }
+</script>

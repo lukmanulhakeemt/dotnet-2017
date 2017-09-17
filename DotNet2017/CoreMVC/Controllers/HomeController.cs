@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using CoreMVC.Models;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Hosting;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
+using System.Net;
 
 namespace CoreMVC.Controllers
 {
@@ -21,6 +24,12 @@ namespace CoreMVC.Controllers
 
         public IActionResult Index()
         {
+            var keyValues = GetJsonKeyValuesData();
+            return View(keyValues);
+        }
+
+        private KeyValues GetJsonKeyValuesData()
+        {
             var path = System.IO.Path.Combine(_hostingEnvironment.ContentRootPath, "file.json");
             string jsonPath = path.Replace("\\", "\\\\").Replace("/", "\\/");
 
@@ -30,8 +39,7 @@ namespace CoreMVC.Controllers
             {
                 json = System.IO.File.ReadAllText(path);
             }
-            var keyValues = JsonConvert.DeserializeObject<KeyValues>(json);
-            return View(keyValues);
+            return JsonConvert.DeserializeObject<KeyValues>(json);
         }
 
         public IActionResult About()
@@ -51,6 +59,39 @@ namespace CoreMVC.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public ActionResult DisplayLocalSearchResult(string searchText)
+        {
+            var data = GetJsonKeyValuesData();
+            var result = data.keyValues.FirstOrDefault(o => o.Key.Equals(searchText, StringComparison.InvariantCultureIgnoreCase));
+            if (result == null)
+            {
+                result = new KeyValue { Key = searchText, Value = "-none-" };
+            }
+            return PartialView("LocalSearchResults", result);
+
+        }
+
+        public ActionResult DisplayServiceSearchResult(string searchText, string serviceUrl)
+        {
+            string url = serviceUrl.TrimEnd('/') + "/" + searchText;
+            string output = url;
+            try
+            {
+                var client = new WebClient();
+
+                client.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36");
+                var response = client.DownloadString(url);
+                dynamic jsonData = JObject.Parse(response);
+                output = jsonData.value;
+            }
+            catch //(Exception ex)
+            {
+                output = "not found"; //"error: " + ex.Message;
+            }
+            var result = new KeyValue { Key = searchText, Value = output };
+            return PartialView("ServiceSearchResults", result);
         }
     }
 }

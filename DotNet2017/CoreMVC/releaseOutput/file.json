@@ -1,6 +1,17 @@
 ﻿{
-  "KeyValues":
-  [
+  "KeyValues": [
+    {
+      "Key": "CACIB",
+      "Value": "Credit Agricole CIB"
+    },
+    {
+      "Key": "MS",
+      "Value": "Micro Services"
+    },
+    {
+      "Key": "OS",
+      "Value": "Operating systems"
+    },
     {
       "Key": "Yuva",
       "Value": "Yuvaraja CHENNAKRISHNAN"
@@ -10,20 +21,12 @@
       "Value": "Nilesh"
     },
     {
-      "Key": "JB",
-      "Value": "James Bond 007"
-    },
-    {
       "Key": "GoT",
       "Value": "Game of Thrones"
     },
     {
-      "Key": "Hell",
-      "Value": "you are already living on it.."
-    },
-    {
-      "Key": "Hello",
-      "Value": "Hi.. what's up?"
+      "Key": "Doc",
+      "Value": "Docker"
     }
   ]
 }

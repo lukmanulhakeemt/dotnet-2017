@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  corewebapi:
+    image: corewebapi
+    build:
+      context: ./CoreWebAPI
+      dockerfile: Dockerfile
+
+  coremvc:
+    image: coremvc
+    build:
+      context: ./CoreMVC
+      dockerfile: Dockerfile
