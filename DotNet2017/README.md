@@ -36,19 +36,19 @@ docker version
 ```
 - Install *_VS Code_* or Install *_VS 2017_* IDE for project. I used *_VS 2017_* for this demo. 
 
-###Some useful commands
+### Some useful commands
 
-####At times "localhost" may not work especillay if docker machine is setup using Docker Toolkit; in that case try to identify the IP address of the docker machine using below command on the docker host machine
+#### At times "localhost" may not work especillay if docker machine is setup using Docker Toolkit; in that case try to identify the IP address of the docker machine using below command on the docker host machine
 ```bash
 docker-machine ip
 ```
 
-####List containers with their IP
+#### List containers with their IP
 ```bash
 docker inspect -f '{{.Name}} - {{.NetworkSettings.IPAddress }}' $(docker ps -aq)
 ```
 
-####RUN a docker image with a friendly "container" name
+#### RUN a docker image with a friendly "container" name
 ```bash
 docker run --name friendly-container-name docker-image-name
 ```
