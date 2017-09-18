@@ -36,6 +36,11 @@ docker version
 ```
 - Install *_VS Code_* or Install *_VS 2017_* IDE for project. I used *_VS 2017_* for this demo. 
 
+### Project Descritpion
+1) CoreConsoleApp
+2) CoreMVC
+3) CoreWebAPI
+
 ### Some useful commands
 
 #### At times "localhost" may not work especillay if docker machine is setup using Docker Toolkit; in that case try to identify the IP address of the docker machine using below command on the docker host machine
