@@ -6,9 +6,20 @@ services:
     build:
       context: ./CoreWebAPI
       dockerfile: Dockerfile
-
+    ports:
+      - "5000:5000"
+    links:
+      - coremvc
+    networks:
+      - webnet
   coremvc:
     image: coremvc
     build:
       context: ./CoreMVC
       dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - webnet
+networks:
+  webnet:
