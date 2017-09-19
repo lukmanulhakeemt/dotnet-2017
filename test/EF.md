@@ -3,6 +3,8 @@
 Often using Entity Framework in a rapid application development model is very challanging. There are certain [**Performance Consideration**](https://msdn.microsoft.com/en-in/data/hh949853.aspx) when using Entity Framework in your *applciation development*. 
 Few of them are lissted below..
 
+1. Most important topic- **Save Changes**
+   Entity Framework tracks changes that have been made to objects in the cache. When the SaveChanges method is called, the Entity Framework tries to merge changes back to the data source. At times your application do no need them. you 
 1. Disable Change tracking
    You should disable change tracking if it is not needed. Most importantly, you do not need change tracking when you would just want to retrieve data and updates on the data read aren't needed at all.
 2. Reduce the cost of view generation using Pre-generated Views
@@ -16,11 +18,11 @@ Few of them are lissted below..
    Use projections to select only the fields that are needed when retrieving data. You should avoid retrieving fields that are not needed.
 
 5. Other rules to be followed 
-   -[x] Retrieve data in a paged manner
-   -[x] Avoid using `Contains` when using LINQ to Entities
-   -[x] Use compiled queries to improve performance of your LINQ queries when retrieving data
-   -[x] Beware of using `context` within loop statements - which means you will make multiple calls to database, which is never a good idea.
-   -[x] Turn off lazy loading on the context.
+   - [x] Retrieve data in a paged manner
+   - [x] Avoid using `Contains` when using LINQ to Entities
+   - [x] Use compiled queries to improve performance of your LINQ queries when retrieving data
+   - [x] Beware of using `context` within loop statements - which means you will make multiple calls to database, which is never a good idea.
+   - [x] Turn off lazy loading on the context.
    ```c#
     public Context()
     {
