@@ -23,10 +23,12 @@ docker push nileshgule/corewebapi
 docker push nileshgule/coremvc
 ```
 
-open SSH tunnel to Swarm endpoint
+open SSH tunnel to Swarm endpoint in SE Asia
 ```bash
-ssh -fNL 2375:localhost:2375 -p 2200 coredemoadmin@coredemomgmt.eastus.cloudapp.azure.com
 
+ssh -fNL 2375:localhost:2375 -p 2200 coredemoadmin@coredemomgmt.southeastasia.cloudapp.azure.com
+
+ssh-keygen -R coredemomgmt.southeastasia.cloudapp.azure.com
 ```
 
 Set DOCKER_HOST environment variable  
@@ -36,8 +38,17 @@ export DOCKER_HOST=:2375
 
 Docker compose using azure compose file
 ```bash
-docker-compose up -d -f docker-compose.azure.yml
+docker-compose -f docker-compose.azure.yml up -d
 ``` 
+
+### Pro tip
+Ensure that exposed ports are consistent between Dockerfile and docker compose file
+
+Access the Web application by browsing to site
+http://coredemoagents.southeastasia.cloudapp.azure.com
+
+API can be accessed using 
+http://coredemoagents.southeastasia.cloudapp.azure.com:8080/api/values
 
 References
 ---
