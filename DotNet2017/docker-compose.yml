@@ -7,7 +7,7 @@ services:
       context: ./CoreWebAPI
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - "8080:8080"
     links:
       - coremvc
     networks:
@@ -18,7 +18,7 @@ services:
       context: ./CoreMVC
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - "80:80"
     networks:
       - webnet
 networks:
