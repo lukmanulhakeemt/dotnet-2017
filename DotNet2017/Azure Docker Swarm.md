@@ -1,5 +1,15 @@
 # Net Core app in Azure
 
+## Azure container service setting
+Name : coredemo
+resource Group : coredemoresourcegroup
+Location : Southeast Asia
+Orchestrator : Swarm
+DNS prefix : coredemo
+Master user credential : coreadmin
+
+
+
 ## Push images to dockerhub
 
 Login to dockerhub account using CLI 
@@ -26,9 +36,16 @@ docker push nileshgule/coremvc
 open SSH tunnel to Swarm endpoint in SE Asia
 ```bash
 
-ssh -fNL 2375:localhost:2375 -p 2200 coredemoadmin@coredemomgmt.southeastasia.cloudapp.azure.com
+ssh -fNL 2375:localhost:2375 -p 2200 coreadmin@coredemomgmt.southeastasia.cloudapp.azure.com
 
 ssh-keygen -R coredemomgmt.southeastasia.cloudapp.azure.com
+```
+
+Incase port 2375 is in use from previous sessions use folowing commands to reset it
+```bash
+lsof -ti:2375
+
+lsof -ti:2375 | xargs kill -9
 ```
 
 Set DOCKER_HOST environment variable  
@@ -40,6 +57,21 @@ Docker compose using azure compose file
 ```bash
 docker-compose -f docker-compose.azure.yml up -d
 ``` 
+
+Scale mvc application to 2 instance
+```bash
+docker-compose -f docker-compose.azure.yml up -d --scale coremvc=2
+```
+
+Scale up services to 3 instance
+```bash
+docker-compose -f docker-compose.azure.yml up -d --scale corewebapi=3 --scale coremvc=3
+```
+
+Scale down services to 2 instances from 3
+```bash
+docker-compose -f docker-compose.azure.yml up -d --scale corewebapi=2 --scale coremvc=2
+```
 
 ### Pro tip
 Ensure that exposed ports are consistent between Dockerfile and docker compose file
