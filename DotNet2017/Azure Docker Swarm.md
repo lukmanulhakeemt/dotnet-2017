@@ -8,6 +8,9 @@ Orchestrator : Swarm
 DNS prefix : coredemo
 Master user credential : coreadmin
 
+### Publish proect oupu in `Release` configuration
+dotnet publish -c Release -o releaseOutput  
+
 ### Build the images
 ```bash
 docker-compose build -f docker-compose-build.yml

@@ -1,12 +1,14 @@
 version: '3'
 
 services:
+  
   corewebapi:
     build:
       context: ./CoreWebAPI
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+
   coremvc:
     build:
       context: ./CoreMVC
