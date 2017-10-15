@@ -14,14 +14,17 @@ Publish the artifacts
 ```bash
 dotnet publish -c Release -o releaseOutput
 ```
+```
 Build the docker image
 ```bash 
-docker build -t aspnetcoreapp .
+docker build -t coremvc .
+
+docker build -t corewebapi .
 ```
 
 Run the container 
 ```bash
-docker run -d -p 8000:8000 aspnetcoreapp
+docker run -d -p 8000:8000 coremvc
 ```
 
 ### Verify application is running fine by navigating to the following link in the browser

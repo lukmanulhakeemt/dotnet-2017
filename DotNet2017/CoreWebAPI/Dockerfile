@@ -4,6 +4,7 @@ WORKDIR /MyFirstCoreWebApi
 
 COPY releaseOutput /MyFirstCoreWebApi
 
-EXPOSE 8080
+EXPOSE 80
 
+# ENTRYPOINT /bin/bash -c "dotnet CoreWebAPI.dll"
 ENTRYPOINT ["dotnet", "CoreWebAPI.dll"]

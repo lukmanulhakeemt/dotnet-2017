@@ -1,5 +1,41 @@
 # Net Core app in Azure
 
+Step1 - Release build
+
+Publish the artifacts
+```bash
+dotnet publish -c Release -o releaseOutput
+```
+
+Step 2 - Transfer artifacts into container
+
+2.1 search images using CLI
+2.2 search images using Docker Hub
+
+2.3 Define Dockerfile
+
+2.4 
+Build the docker image
+```bash 
+docker rmi $(docker images -f dangling=true -q)
+
+docker build -t coremvc .
+
+docker build -t corewebapi .
+```
+
+2.5 Run the container 
+```bash
+docker run -d -p 80:80 coremvc
+
+docker run -d -p 8080:8080 corewebapi
+
+Step 3 - Docker compose
+
+Step 4 - local run
+
+Step 5 - Provision ACS cluster
+
 ## Azure container service setting
 Name : coredemo
 resource Group : coredemoresourcegroup
@@ -121,3 +157,7 @@ References
 3 - [Step by Step guide to deploying Swarm cluster](http://cloudify.co/2016/11/22/step-by-step-guide-deploying-docker-swarm-with-azure-container-service.html)  with Azure Container Service
 
 4 - [ACS Engine swarm mode](https://azure.microsoft.com/en-us/resources/templates/101-acsengine-swarmmode/)
+
+5 - [Swarm filters](https://docs.docker.com/swarm/scheduler/filter/#use-a-constraint-filter)
+
+6 - [Docker Compose V3](https://docs.docker.com/compose/compose-file/#build)

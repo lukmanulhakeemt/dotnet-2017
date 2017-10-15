@@ -22,6 +22,10 @@ bld/
 [Oo]bj/
 [Ll]og/
 aspnetcore/releaseOutput/
+**/CoreWebAPI/releaseOutput/
+**/releaseOutput
+**/**/releaseOutput/
+**/**/**/releaseOutput/
 
 # Visual Studio 2015 cache/options directory
 .vs/
