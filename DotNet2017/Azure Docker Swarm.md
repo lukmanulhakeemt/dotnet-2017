@@ -107,14 +107,17 @@ Scale mvc application to 2 instance
 docker-compose -f docker-compose.azure.yml up -d --scale coremvc=2
 ```
 
-Scale up services to 3 instance
+Scale up services to 4 instance
 ```bash
-docker-compose -f docker-compose.azure.yml up -d --scale corewebapi=3 --scale coremvc=3
+
+docker-compose -f docker-compose.azure.yml up -d --scale corewebapi=4 --scale coremvc=4
 ```
 
 Scale down services to 2 instances from 3
 ```bash
 docker-compose -f docker-compose.azure.yml up -d --scale corewebapi=2 --scale coremvc=2
+
+docker-compose -f docker-compose.azure.yml down
 ```
 
 ### Commands to run in case of full swarm mode
@@ -161,3 +164,5 @@ References
 5 - [Swarm filters](https://docs.docker.com/swarm/scheduler/filter/#use-a-constraint-filter)
 
 6 - [Docker Compose V3](https://docs.docker.com/compose/compose-file/#build)
+
+7 - [Network error solution](https://parekhparthesh.blogspot.sg/2016/08/docker-unable-to-remove-network-has.html)
