@@ -86,9 +86,9 @@ namespace CoreMVC.Controllers
                 dynamic jsonData = JObject.Parse(response);
                 output = jsonData.value;
             }
-            catch //(Exception ex)
+            catch (Exception ex)
             {
-                output = "not found"; //"error: " + ex.Message;
+                output = "not found"; //+ " error: " + ex.Message;
             }
             var result = new KeyValue { Key = searchText, Value = output };
             return PartialView("ServiceSearchResults", result);

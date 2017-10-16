@@ -15,5 +15,7 @@ services:
     build:
       context: ./CoreMVC
       dockerfile: Dockerfile
+    depends_on: 
+      - corewebapi
     ports:
       - "80:80"

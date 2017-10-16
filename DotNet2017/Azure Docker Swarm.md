@@ -28,7 +28,7 @@ docker build -t corewebapi .
 ```bash
 docker run -d -p 80:80 coremvc
 
-docker run -d -p 8080:8080 corewebapi
+docker run -d -p 8080:80 corewebapi
 
 Step 3 - Docker compose
 
@@ -49,7 +49,11 @@ dotnet publish -c Release -o releaseOutput
 
 ### Build the images
 ```bash
-docker-compose build -f docker-compose-build.yml
+docker-compose build -f docker-compose-build.yml  
+
+http://docker.for.mac.localhost:8080/api/KeyValue
+
+http://192.168.65.1:8080/api/KeyValue
 ```
 
 ## Push images to dockerhub
