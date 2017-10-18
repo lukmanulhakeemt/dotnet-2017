@@ -1,12 +1,17 @@
 version: '3'
 
 services:
+  
+  coremvc:
+    image: nileshgule/coremvc
+    depends_on: 
+      - corewebapi
+    ports:
+      - "80:80"
+  
   corewebapi:
     image: nileshgule/corewebapi
     ports:
       - "8080:80"
 
-  coremvc:
-    image: nileshgule/coremvc
-    ports:
-      - "80:80"
+  

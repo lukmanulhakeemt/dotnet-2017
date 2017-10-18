@@ -1,15 +1,6 @@
 version: '3'
 
 services:
-  
-  corewebapi:
-    image: corewebapi
-    build:
-      context: ./CoreWebAPI
-      dockerfile: Dockerfile
-    ports:
-      - "8080:80"
-
   coremvc:
     image: coremvc
     build:
@@ -19,3 +10,13 @@ services:
       - corewebapi
     ports:
       - "80:80"
+      
+  corewebapi:
+    image: corewebapi
+    build:
+      context: ./CoreWebAPI
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+
+  

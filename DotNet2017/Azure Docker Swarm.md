@@ -49,7 +49,9 @@ dotnet publish -c Release -o releaseOutput
 
 ### Build the images
 ```bash
-docker-compose build -f docker-compose-build.yml  
+docker-compose -f docker-compose-build.yml build
+
+docker-compose -f docker-compose-build.yml up -d
 
 http://docker.for.mac.localhost:8080/api/KeyValue
 
@@ -93,7 +95,7 @@ Set DOCKER_HOST environment variable
 export DOCKER_HOST=:2375
 ```
 
-Incase port 2375 is in use from previous sessions use folowing commands to reset it
+Incase port 2375 is in use from previous sessions use following commands to reset it
 ```bash
 lsof -ti:2375
 
@@ -117,7 +119,7 @@ Scale up services to 4 instance
 docker-compose -f docker-compose.azure.yml up -d --scale corewebapi=4 --scale coremvc=4
 ```
 
-Scale down services to 2 instances from 3
+Scale down services to 2 instances from 4
 ```bash
 docker-compose -f docker-compose.azure.yml up -d --scale corewebapi=2 --scale coremvc=2
 
@@ -138,7 +140,7 @@ Access the Web application by browsing to site
 http://coredemoagents.southeastasia.cloudapp.azure.com
 
 API can be accessed using 
-http://coredemoagents.southeastasia.cloudapp.azure.com:8080/api/values
+http://coredemoagents.southeastasia.cloudapp.azure.com:8080/api/keyvalue
 
 ## Docker Swarm visualizer
 ```bash
@@ -152,6 +154,15 @@ docker node ls
 docker node ps
 
 docker node inspect 10.0.0.6
+```
+
+### List of commands to resolve netwotk issue in swarm mode
+```bash
+docker network inspect dotnet2017_default
+
+docker network disconnect -f dotnet2017_default dotnet2017_corewebapi_3
+
+docker network rm dotnet2017_default
 ```
 
 
