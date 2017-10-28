@@ -1,0 +1,57 @@
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: coremvc
+  namespace: my-project
+  labels:
+    run: coremvc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: coremvc
+  template:
+    metadata:
+      labels:
+        run: coremvc
+    spec:
+      containers:
+      - name: coremvc
+        image: nileshgule/coremvc
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: corewebapi
+  namespace: my-project
+  labels:
+    run: corewebapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: corewebapi
+  template:
+    metadata:
+      labels:
+        run: corewebapi
+    spec:
+      containers:
+      - name: coremvc
+        image: nileshgule/corewebapi
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
