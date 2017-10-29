@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: coremvc-ingressl
+  namespace: my-project
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  backend:
+    serviceName: default-http-backend
+    servicePort: 80
+  rules:
+  - host: coremvc.example.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: coremvc
+          servicePort: 80
