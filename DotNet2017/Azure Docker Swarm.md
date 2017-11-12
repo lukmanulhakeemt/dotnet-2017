@@ -132,12 +132,6 @@ docker-compose -f docker-compose.azure.yml up -d --scale corewebapi=2 --scale co
 docker-compose -f docker-compose.azure.yml down
 ```
 
-### Commands to run in case of full swarm mode
-```bash
-docker-compose -f docker-compose.azure.yml down --rmi all
-
-docker stack deploy -c docker-compose.azure.yml webapp
-```
 
 ### Pro tip
 Ensure that exposed ports are consistent between Dockerfile and docker compose file
@@ -148,68 +142,7 @@ http://coredemoagents.southeastasia.cloudapp.azure.com
 API can be accessed using 
 http://coredemoagents.southeastasia.cloudapp.azure.com:8080/api/keyvalue
 
-## Docker Swarm visualizer
-```bash
-docker stack deploy -c visualizer.yml viz
 
-docker run -it -d \
--p 8080:8080 \
--e HOST=swarmmaster.southeastasia.cloudapp.azure.com \
--v /var/run/docker.sock:/var/run/docker.sock \
-manomarks/visualizer
-
-docker run -it -d \
---name portainer \
--p 9000:9000 \
--v /var/run/docker.sock:/var/run/docker.sock \
-portainer/portainer
-
-docker service create \
-   --name portainer \
-   --publish 9000:9000 \
-   --constraint 'node.role == manager' \
-   --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
-   portainer/portainer \
-   -H unix:///var/run/docker.sock
-
-docker run -it -d \
--p 5000:5000 \
--e HOST=swarmmaster.southeastasia.cloudapp.azure.com \
--e PORT=5000 \
--v /var/run/docker.sock:/var/run/docker.sock \
-julienstroheker/docker-swarm-visualizer
-
-docker service create \
-  --name=viz \
-  --publish=8080:8080/tcp \
-  --constraint=node.role==manager \
-  --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
-  dockersamples/visualizer
-
-
-docker service create \
---name=vizualizer \
---publish=8080:8080 \
---constraint=node.role==manager \
---mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
-dockersamples/visualizer
-
-docker service create \
---name web \
--p 8080:80 \
-nginx
-
-docker service update --replicas=2 web
-```
-Visualizer is not working because default Swarm mode in ACS is standalone. Refer to [this](https://github.com/portainer/portainer/issues/704) issue for more details
-### ListDocker swarm nodes
-```bash
-docker node ls
-
-docker node ps
-
-docker node inspect 10.0.0.6
-```
 
 ### List of commands to resolve netwotk issue in swarm mode
 ```bash

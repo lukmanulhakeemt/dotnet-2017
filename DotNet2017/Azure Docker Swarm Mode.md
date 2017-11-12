@@ -74,3 +74,47 @@ docker service scale webapp_corewebapi=3
 ```bash
 docker stack rm webapp
 ```
+
+## Docker Swarm visualizer
+```bash
+docker stack deploy -c visualizer.yml viz
+
+docker service create \
+   --name portainer \
+   --publish 9000:9000 \
+   --constraint 'node.role == manager' \
+   --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
+   portainer/portainer \
+   -H unix:///var/run/docker.sock \
+   --tlsverify
+
+docker run -it -d \
+-p 5000:5000 \
+-e HOST=swarmmaster.southeastasia.cloudapp.azure.com \
+-e PORT=5000 \
+-v /var/run/docker.sock:/var/run/docker.sock \
+julienstroheker/docker-swarm-visualizer
+
+docker service create \
+  --name=viz \
+  --publish=8080:8080/tcp \
+  --constraint=node.role==manager \
+  --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
+  dockersamples/visualizer
+
+
+docker service create \
+--name=vizualizer \
+--publish=8080:8080 \
+--constraint=node.role==manager \
+--mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
+dockersamples/visualizer
+
+docker service create \
+--name web \
+-p 8080:80 \
+nginx
+
+```
+
+The visualizer and portainer images did not work after several attempts. Need to debug the issue with visualization further.
