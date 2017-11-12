@@ -10,7 +10,7 @@ Deploy Azure Container Service in Docker Swarm mode with following options
 |Resource Group | swarmresourcegroup|
 |Location | Southeast Asia |
 |Master prefix | swarmmaster|
-|Master user credential | swarmdmin|
+|Master user credential | swarmadmin|
 |Agent prefix | swarmagent|
 
 ### Open SSH tunnel to Swarm endpoint in SE Asia
@@ -119,4 +119,8 @@ nginx
 
 ```
 
-The visualizer and portainer images did not work after several attempts. Need to debug the issue with visualization further.
+The *visualizer* and *portainer* images did not work after several attempts. Need to debug the issue with visualization further. **Nginx** image was tried to check if Swarm cluster is working fine. 
+
+## Pending items / enhancements
+- Use deployment related configuration within docker compose file
+- Provide default replicas which can be overridden at runtime
