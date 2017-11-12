@@ -11,7 +11,9 @@ Deploy Azure Container Service in Docker Swarm mode with following options
 |Location | Southeast Asia |
 |Master prefix | swarmmaster|
 |Master user credential | swarmadmin|
+|Master node count | 1 |
 |Agent prefix | swarmagent|
+|Agent node count | 1 |
 
 ### Open SSH tunnel to Swarm endpoint in SE Asia
 ```bash
@@ -60,6 +62,13 @@ docker service ps webapp_coremvc
 ```bash
 docker service ps webapp_corewebapi
 ```
+
+## Verify web application and the API are running fine
+Access the Web application by browsing to site
+http://swarmagent.southeastasia.cloudapp.azure.com
+
+API can be accessed using 
+http://swarmagent.southeastasia.cloudapp.azure.com:8080/api/keyvalue
 
 ## Scale services
 ### Scale `Coremvc` service to 2 replicas
