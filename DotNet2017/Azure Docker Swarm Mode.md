@@ -4,8 +4,9 @@ Use [ACS Engine swarm mode](https://azure.microsoft.com/en-us/resources/template
 Deploy Azure Container Service in Docker Swarm mode with following options
 
 ## Azure container service setting
+|Parameter | Value |
+|---|---|
 |Name | coredemo |
-|-----|----------|
 |Resource Group | swarmresourcegroup|
 |Location | Southeast Asia |
 |Master prefix | swarmmaster|
@@ -17,7 +18,7 @@ Deploy Azure Container Service in Docker Swarm mode with following options
 ssh -fNL 2375:localhost:2375 -p 2200 swarmadmin@swarmmaster.southeastasia.cloudapp.azure.com
 ```
 
-### Set DOCKER_HOST environment variable
+### Set `DOCKER_HOST` environment variable
 ```bash
 export DOCKER_HOST=:2375
 ```
