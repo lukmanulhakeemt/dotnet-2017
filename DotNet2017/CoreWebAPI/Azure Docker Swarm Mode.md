@@ -31,8 +31,6 @@ docker node ps
 
 ### Deploy stack to Swarm nodes with stackname `webapp`
 ```bash
-docker-compose -f docker-compose.azure.yml down --rmi all
-
 docker stack deploy -c docker-compose.azure.yml webapp
 ```
 
@@ -54,4 +52,25 @@ docker service ls
 ### List all tasks related to `coremvc`
 ```bash
 docker service ps webapp_coremvc
+```
+
+### List all tasks related to `corewebapi`
+```bash
+docker service ps webapp_corewebapi
+```
+
+## Scale services
+### Scale `Coremvc` service to 2 replicas
+```bash
+docker service scale webapp_coremvc=2
+```
+
+### Scale `corewebapi` service to 3 replicas
+```bash
+docker service scale webapp_corewebapi=3
+```
+
+## Pull down the whole stack
+```bash
+docker stack rm webapp
 ```
