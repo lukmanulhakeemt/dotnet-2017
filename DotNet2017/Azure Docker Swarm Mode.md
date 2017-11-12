@@ -70,6 +70,8 @@ http://swarmagent.southeastasia.cloudapp.azure.com
 API can be accessed using 
 http://swarmagent.southeastasia.cloudapp.azure.com:8080/api/keyvalue
 
+Note that the Swarm cluster is up & running only during the testing. The web lnks will not be available all the time
+
 ## Scale services
 ### Scale `Coremvc` service to 2 replicas
 ```bash
