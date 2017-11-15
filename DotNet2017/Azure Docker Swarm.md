@@ -93,8 +93,6 @@ open SSH tunnel to Swarm endpoint in SE Asia
 ssh -fNL 2375:localhost:2375 -p 2200 coreadmin@coredemomgmt.southeastasia.cloudapp.azure.com
 
 ```
-
-
 Set DOCKER_HOST environment variable  
 ```bash
 export DOCKER_HOST=:2375
