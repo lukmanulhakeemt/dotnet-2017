@@ -128,7 +128,7 @@ lsof -ti:2375
 lsof -ti:2375 | xargs kill -9
 ```
 
-## Deploy to Swarm cluster
+## Step 9 - Deploy & scale services to Swarm cluster
 
 ### Deploy using `docker-compose-azure.yml` file
 
@@ -139,19 +139,24 @@ docker-compose -f docker-compose.azure.yml up -d
 ### Scale mvc application to 2 instance
 
 ```bash
-docker-compose -f docker-compose.azure.yml up -d --scale coremvc=2
+docker-compose -f docker-compose.azure.yml up -d \
+--scale coremvc=2
 ```
 
 ### Scale up services to 4 instance
 
 ```bash
-docker-compose -f docker-compose.azure.yml up -d --scale corewebapi=4 --scale coremvc=4
+docker-compose -f docker-compose.azure.yml up -d \
+--scale corewebapi=4 \
+--scale coremvc=4
 ```
 
 ### Scale down services to 2 instances from 4
 
 ```bash
-docker-compose -f docker-compose.azure.yml up -d --scale corewebapi=2 --scale coremvc=2
+docker-compose -f docker-compose.azure.yml up -d \
+--scale corewebapi=2 \
+--scale coremvc=2
 ```
 
 ### Bring down all the services
