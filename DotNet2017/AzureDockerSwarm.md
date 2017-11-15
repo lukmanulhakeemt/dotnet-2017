@@ -1,4 +1,5 @@
 # Net Core app in Azure
+These are series of steps to be undertaken when we want to deploy a ASP.Net Core app to Docker Swarm in Azure.
 
 ## Step1 - Release build
 
