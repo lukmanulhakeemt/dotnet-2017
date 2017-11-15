@@ -29,6 +29,7 @@ docker build -t corewebapi .
 docker run -d -p 80:80 coremvc
 
 docker run -d -p 8080:80 corewebapi
+```
 
 Step 3 - Docker compose
 
@@ -37,26 +38,31 @@ Step 4 - local run
 Step 5 - Provision ACS cluster
 
 ## Azure container service setting
-Name : coredemo
-resource Group : coredemoresourcegroup
-Location : Southeast Asia
-Orchestrator : Swarm
-DNS prefix : coredemo
-Master user credential : coreadmin
+|Parameter | Value |
+|---|---|
+|Name | coredemo |
+|Resource Group | coredemoresourcegroup |
+|Location | Southeast Asia |
+|Orchestrator | Swarm |
+|DNS prefix | coredemo |
+|Master user credential | coreadmin |
 
-### Publish proect oupu in `Release` configuration
+### Publish project output in `Release` configuration
+```bash
 dotnet publish -c Release -o releaseOutput  
+```
 
 ### Build the images
 ```bash
 docker-compose -f docker-compose-build.yml build
 
 docker-compose -f docker-compose-build.yml up -d
+```
 
 http://docker.for.mac.localhost:8080/api/KeyValue
 
 http://192.168.65.1:8080/api/KeyValue
-```
+
 
 ## Push images to dockerhub
 
@@ -86,13 +92,6 @@ open SSH tunnel to Swarm endpoint in SE Asia
 
 ssh -fNL 2375:localhost:2375 -p 2200 coreadmin@coredemomgmt.southeastasia.cloudapp.azure.com
 
-ssh -fNL 2375:localhost:2375 -p 2200 coredemoadmin@swarmmaster.southeastasia.cloudapp.azure.com
-
-ssh -fNL 2375:localhost:2375 -p 2200 swarmadmin@swarmmaster.southeastasia.cloudapp.azure.com
-
-
-
-ssh-keygen -R newcoredemomgmt.southeastasia.cloudapp.azure.com
 ```
 
 
@@ -109,7 +108,7 @@ lsof -ti:2375 | xargs kill -9
 ```
 
 ## Deploy to Swarm cluster
-Docker compose using azure compose file
+Deploy using `docker-compose-azure.yml` file
 ```bash
 docker-compose -f docker-compose.azure.yml up -d
 ``` 
@@ -128,7 +127,10 @@ docker-compose -f docker-compose.azure.yml up -d --scale corewebapi=4 --scale co
 Scale down services to 2 instances from 4
 ```bash
 docker-compose -f docker-compose.azure.yml up -d --scale corewebapi=2 --scale coremvc=2
+```
 
+Bring down all the services
+```bash
 docker-compose -f docker-compose.azure.yml down
 ```
 
@@ -141,7 +143,6 @@ http://coredemoagents.southeastasia.cloudapp.azure.com
 
 API can be accessed using 
 http://coredemoagents.southeastasia.cloudapp.azure.com:8080/api/keyvalue
-
 
 
 ### List of commands to resolve netwotk issue in swarm mode
