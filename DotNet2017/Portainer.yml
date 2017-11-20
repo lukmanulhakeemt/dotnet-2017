@@ -1,12 +1,12 @@
-version: '3.1'
+version: '3'
 
 services:
-  viz:
+  portainer:
     image: portainer/portainer
     volumes: 
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - "9000:9000"
+      - 9000:9000
     deploy:
       placement:
         constraints:
