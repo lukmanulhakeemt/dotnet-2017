@@ -19,7 +19,11 @@ Deploy Azure Container Service in Docker Swarm mode with following options
 
 By default ACS deployment opens the ports `443`, `80` and `8080`. Any other additional ports required to be published needs to be exposed separately. This can be done by `Health probe` and `Load balancing rule` to the SWarm agent load balancer settings.
 
+![ACS Health Probe](../Images/ACSHealthProbe.png)
+
 For the purpose of this demo, I have opened up ports `9000` and `8090`.
+
+![ACS Load Balancer](../Images/ACSLoadBalancer.png)
 
 ### Open SSH tunnel to Swarm endpoint in SE Asia
 ```bash
@@ -127,7 +131,7 @@ docker stack deploy -c visualizer.yml viz
 docker stack deploy -c portainer.yml portainer
 ```
 
-Access the visualizer uisng link
+Access the visualizer using link
 http://swarmagent.southeastasia.cloudapp.azure.com:8080
 
 If everything goes fine, Swarm visualizer should  show the running containers on all the nodes as shown below
