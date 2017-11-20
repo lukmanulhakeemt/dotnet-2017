@@ -23,7 +23,7 @@ By default ACS deployment opens the ports `443`, `80` and `8080`. Any other addi
 
 For the purpose of this demo, I have opened up ports `9000` and `8090`.
 
-![ACS Load Balancer](../Images/ACSLoadBalancer.png)
+![ACS Load Balancer](../Images/ACSLoadBalancingRules.png)
 
 ### Open SSH tunnel to Swarm endpoint in SE Asia
 ```bash
