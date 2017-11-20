@@ -137,6 +137,25 @@ docker service create \
    -H unix:///var/run/docker.sock
 ```
 
+If everything goes fine, Portainer can be access using http://swarmagent.southeastasia.cloudapp.azure.com:9000/#/dashboard
+
+The portainer UI is much more feature rich compared to visualizer. Here are some screenshots
+
+#### Dashboard
+
+![Portainer Dashboard](../Images/PortainerDashboard.png)
+
+#### Swarm
+
+![Portainer Swarm](../Images/PortainerSwarm.png)
+
+#### Stacks
+
+![Portainer Stacks](../Images/PortainerStacks.png)
+
+#### Services
+
+![Portainer Services](../Images/PortainerServices.png)
 ## Pending items / enhancements
 
 - Use compose file format and deploy the portainer image. Currently this approach is failing due to passing of the H flag. Need to find a way how H flag can be described within a compose file
