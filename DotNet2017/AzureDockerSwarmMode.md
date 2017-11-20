@@ -17,7 +17,7 @@ Deploy Azure Container Service in Docker Swarm mode with following options
 
 ### Open custom ports
 
-By default ACS deployment opens the ports 443, 80 and 8080. Any other additional ports required to be published needs to be exposed separately. This can be done by `Health probe` and `Load balancing rule` to the SWarm agent load balancer settings.
+By default ACS deployment opens the ports `443`, `80` and `8080`. Any other additional ports required to be published needs to be exposed separately. This can be done by `Health probe` and `Load balancing rule` to the SWarm agent load balancer settings.
 
 For the purpose of this demo, I have opened up ports `9000` and `8090`.
 
@@ -65,21 +65,23 @@ docker service ps webapp_coremvc
 ```
 
 ### List all tasks related to `corewebapi`
+
 ```bash
 docker service ps webapp_corewebapi
 ```
 
 ## Verify web application and the API are running fine
-Access the Web application by browsing to site
+
+Access the Web application by browsing to site at deault port `80`
 http://swarmagent.southeastasia.cloudapp.azure.com
 
-API can be accessed using 
-http://swarmagent.southeastasia.cloudapp.azure.com:8080/api/keyvalue
+API can be accessed using at port `8090`
+http://swarmagent.southeastasia.cloudapp.azure.com:8090/api/keyvalue
 
-Note that the Swarm cluster is up & running only during the testing. The web lnks will not be available all the time
+Note that the Swarm cluster is up & running only during the testing. The web links will not be available all the time
 
 ## Scale services
-### Scale `Coremvc` service to 2 replicas
+### Scale `coremvc` service to 2 replicas
 ```bash
 docker service scale webapp_coremvc=2
 ```
