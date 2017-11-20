@@ -89,49 +89,54 @@ docker stack rm webapp
 ```
 
 ## Docker Swarm visualizer
+
+### Pre-requisite
+
+Ensure that the master node is set to active. ACS engine deployment by default sets it to paused. Visualizer & Portainer both need the master node to be active.
+
 ```bash
-docker stack deploy -c visualizer.yml viz
+docker node update --availability=active swarmm-master-coredemo-0
+```
 
-docker service create \
-   --name portainer \
-   --publish 9000:9000 \
-   --constraint 'node.role == manager' \
-   --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
-   portainer/portainer \
-   -H unix:///var/run/docker.sock \
-   --tlsverify
+### Run visualizer service
 
-docker run -it -d \
--p 5000:5000 \
--e HOST=swarmmaster.southeastasia.cloudapp.azure.com \
--e PORT=5000 \
--v /var/run/docker.sock:/var/run/docker.sock \
-julienstroheker/docker-swarm-visualizer
+Visualizer can be run in 2 ways. First one is by creating the `service` manually.
 
+```bash
 docker service create \
   --name=viz \
   --publish=8080:8080/tcp \
   --constraint=node.role==manager \
   --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
   dockersamples/visualizer
-
-
-docker service create \
---name=vizualizer \
---publish=8080:8080 \
---constraint=node.role==manager \
---mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
-dockersamples/visualizer
-
-docker service create \
---name web \
--p 8080:80 \
-nginx
-
 ```
 
-The *visualizer* and *portainer* images did not work after several attempts. Need to debug the issue with visualization further. **Nginx** image was tried to check if Swarm cluster is working fine. 
+Second option is to describe these steps in a `compose file` and `deploy` feature of `docker stack`
+
+```bash
+docker stack deploy -c visualizer.yml viz
+```
+
+Access the visualizer uisng link
+http://swarmagent.southeastasia.cloudapp.azure.com:8080
+
+If everything goes fine, Swarm visualizer should  show the running containers on all the nodes as shown below
+![swarm visualizer](Images/SwarmVisualizer.png)
+### Run Portainer service
+
+Another option for visualizing the containers & Swarm cluster state is Portainer.
+
+```bash
+docker service create \
+   --name portainer \
+   --publish 9000:9000 \
+   --constraint 'node.role == manager' \
+   --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
+   portainer/portainer \
+   -H unix:///var/run/docker.sock
+```
 
 ## Pending items / enhancements
+- Use compose file format and deploy the portainer image. Currently this approach is failing due to passing of the H flag. Need to find a way how H flag can be described within a compose file
 - Use deployment related configuration within docker compose file
 - Provide default replicas which can be overridden at runtime

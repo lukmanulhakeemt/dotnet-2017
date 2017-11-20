@@ -12,6 +12,6 @@ services:
   corewebapi:
     image: nileshgule/corewebapi
     ports:
-      - "8080:80"
+      - "8090:80"
 
   
