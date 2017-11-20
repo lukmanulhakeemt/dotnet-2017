@@ -121,7 +121,8 @@ Access the visualizer uisng link
 http://swarmagent.southeastasia.cloudapp.azure.com:8080
 
 If everything goes fine, Swarm visualizer should  show the running containers on all the nodes as shown below
-![swarm visualizer](Images/SwarmVisualizer.png)
+![swarm visualizer](../Images/SwarmVisualizer.png)
+
 ### Run Portainer service
 
 Another option for visualizing the containers & Swarm cluster state is Portainer.
@@ -137,6 +138,7 @@ docker service create \
 ```
 
 ## Pending items / enhancements
+
 - Use compose file format and deploy the portainer image. Currently this approach is failing due to passing of the H flag. Need to find a way how H flag can be described within a compose file
 - Use deployment related configuration within docker compose file
 - Provide default replicas which can be overridden at runtime
