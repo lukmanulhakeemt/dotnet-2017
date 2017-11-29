@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinConsoleApp", "WinConsoleApp\WinConsoleApp.csproj", "{AA739736-E073-48A9-8BFA-FFE5A454EA6D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreConsoleApp", "CoreConsoleApp\CoreConsoleApp.csproj", "{A3B91E82-070D-441F-88EA-3C843F3D28D5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreMVC", "CoreMVC\CoreMVC.csproj", "{8E00AC8E-4085-4965-A176-0F082B839AE0}"
