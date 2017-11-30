@@ -2,7 +2,7 @@ version: '3'
 
 services:
   coremvc:
-    image: coremvc
+    image: nileshgule/coremvc
     build:
       context: ./CoreMVC
       dockerfile: Dockerfile
@@ -12,7 +12,7 @@ services:
       - "80:80"
       
   corewebapi:
-    image: corewebapi
+    image: nileshgule/corewebapi
     build:
       context: ./CoreWebAPI
       dockerfile: Dockerfile
