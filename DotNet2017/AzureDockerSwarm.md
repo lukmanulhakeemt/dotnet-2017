@@ -1,4 +1,5 @@
 # Net Core app in Azure
+
 These are series of steps to be undertaken when we want to deploy a ASP.Net Core app to Docker Swarm in Azure.
 
 ## Step1 - Release build
@@ -37,7 +38,7 @@ docker build -t coremvc .
 docker build -t corewebapi .
 ```
 
-### 2.5 Run the container 
+### 2.5 Run the container
 
 ```bash
 docker run -d -p 80:80 coremvc
@@ -65,7 +66,7 @@ docker-compose -f docker-compose-build.yml up -d
 
 Use `docker.for.mac.localhost` property to access webapi [http://docker.for.mac.localhost:8080/api/KeyValue](http://docker.for.mac.localhost:8080/api/KeyValue)
 
-Alternatively, special ip `192.168.65.1` can be used as well instead of `docker.for.mac.localhost` 
+Alternatively, special ip `192.168.65.1` can be used as well instead of `docker.for.mac.localhost`
 [http://192.168.65.1:8080/api/KeyValue](http://192.168.65.1:8080/api/KeyValue)
 
 ## Step 5 - tag images before publishing to registry
@@ -80,7 +81,7 @@ docker tag coremvc nileshgule/coremvc
 
 ## Step 6 - Push images to dockerhub
 
-### Login to Dockerhub account using CLI 
+### Login to Dockerhub account using CLI
 
 ```bash
 docker login
@@ -173,7 +174,7 @@ Ensure that exposed ports are consistent between Dockerfile and docker compose f
 Access the Web application by browsing to site
 [http://coredemoagents.southeastasia.cloudapp.azure.com](http://coredemoagents.southeastasia.cloudapp.azure.com)
 
-API can be accessed using 
+API can be accessed using
 [http://coredemoagents.southeastasia.cloudapp.azure.com:8080/api/keyvalue](http://coredemoagents.southeastasia.cloudapp.azure.com:8080/api/keyvalue)
 
 ### List of commands to resolve network issue in swarm mode
@@ -187,6 +188,7 @@ docker network rm dotnet2017_default
 ```
 
 ## References
+
 ---
 1 - Overview of [Docker-compose](https://docs.docker.com/compose/reference/overview/) CLI
 
