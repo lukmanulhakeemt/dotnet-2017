@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using System.Net;
+using System.IO;
 
 namespace CoreMVC.Controllers
 {
@@ -30,7 +31,7 @@ namespace CoreMVC.Controllers
 
         private KeyValues GetJsonKeyValuesData()
         {
-            var path = System.IO.Path.Combine(_hostingEnvironment.ContentRootPath, "file.json");
+            var path = Path.Combine(_hostingEnvironment.ContentRootPath, "file.json");
             string jsonPath = path.Replace("\\", "\\\\").Replace("/", "\\/");
 
             var json = "{\"KeyValues\":[{\"Key\": \"Test\",\"Value\": \"" + jsonPath + " file could not be located, so this holds only this test key-value.\"}]}";
