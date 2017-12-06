@@ -1,24 +1,8 @@
 ﻿{
   "KeyValues": [
     {
-      "Key": "CACIB",
-      "Value": "Credit Agricole CIB"
-    },
-    {
       "Key": "MS",
       "Value": "Micro Services"
-    },
-    {
-      "Key": "OS",
-      "Value": "Operating systems"
-    },
-    {
-      "Key": "Yuva",
-      "Value": "Yuvaraja CHENNAKRISHNAN"
-    },
-    {
-      "Key": "Nil",
-      "Value": "Nilesh"
     },
     {
       "Key": "GoT",
@@ -27,6 +11,18 @@
     {
       "Key": "Doc",
       "Value": "Docker"
+    },
+    {
+      "Key": "Kub",
+      "Value": "Kubernetes"
+    },
+    {
+      "Key": "Az",
+      "Value": "Azure"
+    },
+    {
+      "Key": "AKS",
+      "Value": "Azure Container Service"
     }
   ]
 }
