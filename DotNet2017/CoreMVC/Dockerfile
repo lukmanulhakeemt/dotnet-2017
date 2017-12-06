@@ -16,6 +16,6 @@ WORKDIR /MyFirstMvcCoreApp
 
 COPY --from=build-env /MyFirstMvcCoreApp/releaseOutput ./
 
-EXPOSE 5000
+EXPOSE 80
 
 ENTRYPOINT ["dotnet", "CoreMVC.dll"]

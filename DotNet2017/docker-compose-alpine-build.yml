@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  coremvc:
+    image: nileshgule/coremvc
+    build:
+      context: ./CoreMVC
+      dockerfile: Dockerfile
+    depends_on: 
+      - corewebapi
+    ports:
+      - "80:80"
+      
+  corewebapi:
+    image: nileshgule/corewebapi
+    build:
+      context: ./CoreWebAPI
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+  

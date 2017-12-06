@@ -19,9 +19,8 @@ namespace CoreMVC
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                // .UseUrls("http://localhost:8000", "http://localhost:8001")
                 .UseKestrel()
-                .UseUrls("http://*:5000")
+                .UseUrls("http://*:80")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
                 .Build();
