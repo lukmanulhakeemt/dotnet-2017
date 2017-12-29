@@ -19,11 +19,10 @@ namespace CoreWebAPI.Controllers
 
             if (_context.KeyValues.Count() == 0)
             {
-                _context.KeyValues.Add(new KeyValue { Key = "CACIB", Value = "Credit Agricole CIB" });
                 _context.KeyValues.Add(new KeyValue { Key = "GoT", Value = "Game of Thrones is an American fantasy drama television series created by David Benioff and D. B.Weiss." });
                 _context.KeyValues.Add(new KeyValue { Key = "MS", Value = "Microsoft" });
                 _context.KeyValues.Add(new KeyValue { Key = "OS", Value = "Open Source" });
-                _context.KeyValues.Add(new KeyValue { Key = "Doc", Value = "Doc-Chain aka Blockchain as per CACIB" });
+                _context.KeyValues.Add(new KeyValue { Key = "Doc", Value = "Doc-Chain aka Blockchain" });
                 _context.SaveChanges();
             }
         }
