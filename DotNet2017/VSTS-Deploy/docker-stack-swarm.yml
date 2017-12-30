@@ -3,14 +3,14 @@ version: '3'
 services:
   
   coremvc:
-    image: nileshgule/coremvc:${BUILD_BUILDID}
+    image: nileshgule/coremvc:$BUILD_BUILDID
     depends_on: 
       - corewebapi
     ports:
       - "80:80"
   
   corewebapi:
-    image: nileshgule/corewebapi:${BUILD_BUILDID}
+    image: nileshgule/corewebapi:$BUILD_BUILDID
     ports:
       - "8080:80"
 
