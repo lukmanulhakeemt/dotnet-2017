@@ -2,13 +2,15 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: coremvc-ingress
-  namespace: my-project
+  namespace: do-myproject
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
 spec:
-  backend:
-    serviceName: default-http-backend
-    servicePort: 80
+#  backend:
+#    serviceName: default-http-backend
+#    servicePort: 80
   rules:
-  - host: coremvc.example.local
+  - host: coremvc.geek.per.sg
     http:
       paths:
       - path: /
@@ -21,16 +23,18 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: corewebapi-ingress
-  namespace: my-project
+  namespace: do-myproject
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
 spec:
-  backend:
-    serviceName: default-http-backend
-    servicePort: 80
+#  backend:
+#    serviceName: default-http-backend
+#    servicePort: 80
   rules:
-  - host: corewebapi.example.local
+  - host: corewebapi.geek.per.sg
     http:
       paths:
-      - path: /api/keyvalue
+      - path: /api/keyvalue/
         backend:
           serviceName: corewebapi
           servicePort: 80

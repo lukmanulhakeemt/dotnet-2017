@@ -3,11 +3,11 @@ kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
   name: coremvc
-  namespace: my-project
+  namespace: do-myproject
   labels:
     run: coremvc
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       run: coremvc
@@ -32,7 +32,7 @@ kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
   name: corewebapi
-  namespace: my-project
+  namespace: do-myproject
   labels:
     run: corewebapi
 spec:
@@ -49,7 +49,7 @@ spec:
       - name: coremvc
         image: nileshgule/corewebapi
         ports:
-        - containerPort: 80
+        - containerPort: 8080
           protocol: TCP
         imagePullPolicy: IfNotPresent
       restartPolicy: Always
