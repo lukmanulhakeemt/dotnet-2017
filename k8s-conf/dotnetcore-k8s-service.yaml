@@ -3,7 +3,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: coremvc
-  namespace: my-project
+  namespace: do-myproject
   labels:
     run: coremvc
 spec:
@@ -11,24 +11,22 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
-    nodePort: 31000
   selector:
     run: coremvc
-  type: NodePort
+  type: ClusterIP
 ---
 kind: Service
 apiVersion: v1
 metadata:
   name: corewebapi
-  namespace: my-project
+  namespace: do-myproject
   labels:
     run: corewebapi
 spec:
   ports:
   - protocol: TCP
     port: 80
-    targetPort: 80
-    nodePort: 31001
+    targetPort: 8080
   selector:
     run: corewebapi
-  type: NodePort
+  type: ClusterIP
