@@ -23,6 +23,9 @@ namespace CoreWebAPI.Controllers
                 _context.KeyValues.Add(new KeyValue { Key = "MS", Value = "Microsoft" });
                 _context.KeyValues.Add(new KeyValue { Key = "OS", Value = "Open Source" });
                 _context.KeyValues.Add(new KeyValue { Key = "Doc", Value = "Doc-Chain aka Blockchain" });
+                _context.KeyValues.Add(new KeyValue { Key = "Kub", Value = "Kubernetes" });
+                _context.KeyValues.Add(new KeyValue { Key = "AZ", Value = "Azure is the best" });
+                _context.KeyValues.Add(new KeyValue { Key = "AKS", Value = "Azure Container Service (ACS)" });
                 _context.SaveChanges();
             }
         }
