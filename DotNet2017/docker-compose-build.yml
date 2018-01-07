@@ -1,6 +1,17 @@
 version: '3'
 
 services:
+  sql2017:
+    image: nileshgule/sqldb
+    hostname: 'sql2017'
+    container_name: sql2017
+    build:
+      context: ./Database
+      dockerfile: Dockerfile
+    ports:
+      - "1433:1433"
+    tty: true
+  
   coremvc:
     image: nileshgule/coremvc
     build:
@@ -16,6 +27,8 @@ services:
     build:
       context: ./CoreWebAPI
       dockerfile: Dockerfile
+    depends_on:
+      - sql2017
     ports:
       - "8080:8080"
 

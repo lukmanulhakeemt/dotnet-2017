@@ -22,6 +22,6 @@ namespace CoreWebAPI.Models
         {
         }
 
-        public DbSet<KeyValue> KeyValues { get; set; }
+        public DbSet<KeyValue> KeyValue { get; set; }
     }
 }

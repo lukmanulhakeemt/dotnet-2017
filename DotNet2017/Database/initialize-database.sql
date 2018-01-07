@@ -20,3 +20,14 @@ GO
 INSERT INTO TechTalk VALUES (1, 'Scaling Docker Containers', 1); 
 INSERT INTO TechTalk VALUES (2, 'Azure Container Services', 2);
 GO
+
+CREATE TABLE KeyValue ([Key] NVARCHAR(10), [Value] NVARCHAR(100))
+GO
+
+INSERT INTO KeyValue VALUES('GoT', 'American fantasy drama television series');
+INSERT INTO KeyValue VALUES('MS', 'Microsoft');
+INSERT INTO KeyValue VALUES('OS', 'Open source');
+INSERT INTO KeyValue VALUES('Doc', 'Doc-chain aka Blockchain');
+INSERT INTO KeyValue VALUES('AZ', 'Azure');
+INSERT INTO KeyValue VALUES('ACS', 'Azure Container Service');
+GO

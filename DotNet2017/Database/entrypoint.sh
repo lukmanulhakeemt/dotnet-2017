@@ -1,3 +1,3 @@
-#start SQL Server, start the script to create the DB and import the data, start the app
+#start SQL Server, start the script to create the DB and initial data
 echo 'starting database setup'
 /opt/mssql/bin/sqlservr & ./setup-database.sh & bash
