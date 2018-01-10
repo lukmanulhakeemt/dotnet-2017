@@ -32,6 +32,12 @@ docker exec -it sql2017 /opt/mssql-tools/bin/sqlcmd \
 -U SA \
 -P "January2018" \
 -Q "SELECT Name FROM sys.Databases"
+
+docker exec -it sql2017 /opt/mssql-tools/bin/sqlcmd \
+-S localhost \
+-U SA \
+-P "January2018" \
+
 ```
 
 ## Query the TechTalksDB database table to ensure startup script has initialized the new DB with reference data
