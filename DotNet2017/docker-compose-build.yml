@@ -3,6 +3,8 @@ version: '3'
 services:
   sql2017:
     image: nileshgule/sqldb
+    volumes:
+      - mssql-server-linux-data:/var/opt/mssql/data
     hostname: 'sql2017'
     container_name: sql2017
     build:
@@ -31,5 +33,8 @@ services:
       - sql2017
     ports:
       - "8080:8080"
+
+volumes:
+  mssql-server-linux-data:
 
   
