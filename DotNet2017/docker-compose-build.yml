@@ -13,9 +13,15 @@ services:
     ports:
       - "1433:1433"
     tty: true
+    # healthcheck:
+    #   test: sqlcmd -S sql2017 -U SA -P 'January2018' -Q 'select 1'
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 5
   
   coremvc:
     image: nileshgule/coremvc
+    container_name: coremvc
     build:
       context: ./CoreMVC
       dockerfile: Dockerfile
@@ -26,6 +32,7 @@ services:
       
   corewebapi:
     image: nileshgule/corewebapi
+    container_name: corewebapi
     build:
       context: ./CoreWebAPI
       dockerfile: Dockerfile
