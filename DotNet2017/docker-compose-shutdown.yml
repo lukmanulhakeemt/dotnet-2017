@@ -6,8 +6,5 @@
   - name: Run docker compose down command
     shell: docker-compose -f docker-compose-build.yml down
 
-  - name: Run docker contianer Prune command
-    shell: echo Y | docker container prune
-
-  - name: Run docker image Prune command
-    shell: echo Y | docker image prune
+  - name: Cleanup resources using docker system Prune command
+    shell: echo Y | docker system prune
