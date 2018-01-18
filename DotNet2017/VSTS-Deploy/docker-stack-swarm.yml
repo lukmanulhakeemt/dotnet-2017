@@ -1,7 +1,17 @@
 version: '3'
 
 services:
-  
+  sql2017:
+    # image: nileshgule/sqldb:${BUILD_BUILDID}
+    image: nileshgule/sqldb
+    volumes:
+      - mssql-server-linux-data:/var/opt/mssql/data
+    hostname: 'sql2017'
+    container_name: sql2017
+    ports:
+      - "1433:1433"
+    tty: true
+
   coremvc:
     # image: nileshgule/coremvc:${BUILD_BUILDID}
     image: nileshgule/coremvc
