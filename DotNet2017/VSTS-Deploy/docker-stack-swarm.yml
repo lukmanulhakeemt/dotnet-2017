@@ -25,5 +25,6 @@ services:
     image: nileshgule/corewebapi
     ports:
       - "8080:80"
-
   
+  volumes:
+    mssql-server-linux-data:
