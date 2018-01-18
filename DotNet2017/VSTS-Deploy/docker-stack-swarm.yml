@@ -26,5 +26,5 @@ services:
     ports:
       - "8080:80"
   
-  volumes:
-    mssql-server-linux-data:
+volumes:
+  mssql-server-linux-data:
