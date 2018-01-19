@@ -14,6 +14,8 @@ az login
 
 az account set --subscription "Visual Studio Enterprise"
 
+az account set --subscription "Azure Pass"
+
 ```
 
 ## Create resource group

@@ -6,7 +6,7 @@ services:
     image: nileshgule/sqldb
     volumes:
       - mssql-server-linux-data:/var/opt/mssql/data
-    hostname: 'sql2017'
+    # hostname: 'sql2017'
     # container_name: sql2017
     ports:
       - "1433:1433"
