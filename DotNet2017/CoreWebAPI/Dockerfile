@@ -1,5 +1,4 @@
-# FROM microsoft/dotnet-nightly:2.1-sdk AS build-env
-FROM microsoft/dotnet AS build-env
+FROM microsoft/aspnetcore-build AS build-env
 
 WORKDIR /MyFirstCoreWebApi
 
@@ -11,7 +10,6 @@ COPY . ./
 RUN dotnet publish -c Release -o releaseOutput --no-restore
 
 #build runtime image
-# FROM microsoft/dotnet-nightly:2.1-runtime-alpine
 FROM microsoft/aspnetcore:2.0
 
 WORKDIR /MyFirstCoreWebApi
