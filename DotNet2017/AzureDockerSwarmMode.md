@@ -72,6 +72,7 @@ docker stack ps webapp
 ```
 
 ### List all services
+
 ```bash
 docker service ls
 ```

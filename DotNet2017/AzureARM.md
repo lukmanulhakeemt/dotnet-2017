@@ -51,6 +51,18 @@ az group deployment create \
 
 ```
 
+## Create deployment using local template file and parameters
+
+```bash
+
+az group deployment create \
+    --name "coredemo" \
+    --resource-group "swarmresourcegroup" \
+    --template-file azuredeploy.json \
+    --parameters parameters.json
+
+```
+
 ## Delete resources at the end
 
 ```bash
