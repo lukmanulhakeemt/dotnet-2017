@@ -1,4 +1,5 @@
-FROM microsoft/dotnet-nightly:2.1-sdk AS build-env
+# FROM microsoft/dotnet-nightly:2.1-sdk AS build-env
+FROM microsoft/dotnet AS build-env
 
 WORKDIR /MyFirstMvcCoreApp
 
@@ -10,7 +11,8 @@ COPY . ./
 RUN dotnet publish -c Release -o releaseOutput --no-restore
 
 #build runtime image
-FROM microsoft/dotnet-nightly:2.1-runtime-alpine
+# FROM microsoft/dotnet-nightly:2.1-runtime-alpine
+FROM microsoft/aspnetcore:2.0
 
 WORKDIR /MyFirstMvcCoreApp
 

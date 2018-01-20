@@ -26,16 +26,23 @@ For the purpose of this demo, I have opened up ports `9000` and `8090`.
 ![ACS Load Balancer](../Images/ACSLoadBalancingRules.png)
 
 ### Open SSH tunnel to Swarm endpoint in SE Asia
+
 ```bash
+
 ssh -fNL 2375:localhost:2375 -p 2200 swarmadmin@swarmmaster.southeastasia.cloudapp.azure.com
+
 ```
 
 ### Set `DOCKER_HOST` environment variable
+
 ```bash
+
 export DOCKER_HOST=:2375
+
 ```
 
 ### List Docker swarm nodes
+
 ```bash
 docker node ls
 
@@ -79,8 +86,8 @@ docker service ps webapp_corewebapi
 Access the Web application by browsing to site at deault port `80`
 http://swarmagent.southeastasia.cloudapp.azure.com
 
-API can be accessed using at port `8090`
-http://swarmagent.southeastasia.cloudapp.azure.com:8090/api/keyvalue
+API can be accessed using at port `8080`
+http://swarmagent.southeastasia.cloudapp.azure.com:8080/api/keyvalue
 
 Note that the Swarm cluster is up & running only during the testing. The web links will not be available all the time
 
