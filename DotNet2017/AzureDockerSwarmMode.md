@@ -1,9 +1,11 @@
 ## Deploy Swarm using ACS
+
 Use [ACS Engine swarm mode](https://azure.microsoft.com/en-us/resources/templates/101-acsengine-swarmmode/) as the default ACS uses standalone Swarm cluster which is quite old.
 
 Deploy Azure Container Service in Docker Swarm mode with following options
 
 ## Azure container service setting
+
 |Parameter | Value |
 |---|---|
 |Name | coredemo |
@@ -50,17 +52,21 @@ docker node ps
 ```
 
 ## Deploy services in Swarm
+
 ### Deploy stack to Swarm nodes with stackname `webapp`
+
 ```bash
 docker stack deploy -c docker-compose.azure.yml webapp
 ```
 
 ### List stacks
+
 ```bash
 docker stack ls
 ```
 
 ### List tasks in `webapp` stack
+
 ```bash
 docker stack ps webapp
 ```
@@ -71,6 +77,7 @@ docker service ls
 ```
 
 ### List all tasks related to `coremvc`
+
 ```bash
 docker service ps webapp_coremvc
 ```
@@ -92,17 +99,21 @@ http://swarmagent.southeastasia.cloudapp.azure.com:8080/api/keyvalue
 Note that the Swarm cluster is up & running only during the testing. The web links will not be available all the time
 
 ## Scale services
+
 ### Scale `coremvc` service to 2 replicas
+
 ```bash
 docker service scale webapp_coremvc=2
 ```
 
 ### Scale `corewebapi` service to 3 replicas
+
 ```bash
 docker service scale webapp_corewebapi=3
 ```
 
 ## Pull down the whole stack
+
 ```bash
 docker stack rm webapp
 ```
