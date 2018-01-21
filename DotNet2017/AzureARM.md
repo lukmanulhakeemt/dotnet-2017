@@ -67,6 +67,6 @@ az group deployment create \
 
 ```bash
 
-az group delete --name swarmresourcegroup
+echo y | az group delete --name swarmresourcegroup
 
 ```
