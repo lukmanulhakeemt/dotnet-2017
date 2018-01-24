@@ -2,7 +2,8 @@ FROM microsoft/aspnetcore-build AS build-env
 
 WORKDIR /MyFirstMvcCoreApp
 
-COPY *.csproj ./
+# COPY *.csproj ./
+COPY CoreMVC.csproj ./
 COPY NuGet.config ./
 RUN dotnet restore
 
