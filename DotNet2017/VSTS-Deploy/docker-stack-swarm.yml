@@ -2,8 +2,8 @@ version: '3'
 
 services:
   sql2017:
-    # image: nileshgule/sqldb:${BUILD_BUILDID}
-    image: nileshgule/sqldb
+    image: nileshgule/sqldb:${BUILD_BUILDID}
+    # image: nileshgule/sqldb
     volumes:
       - mssql-server-linux-data:/var/opt/mssql/data
     # hostname: 'sql2017'
@@ -13,16 +13,16 @@ services:
     tty: true
 
   coremvc:
-    # image: nileshgule/coremvc:${BUILD_BUILDID}
-    image: nileshgule/coremvc
+    image: nileshgule/coremvc:${BUILD_BUILDID}
+    # image: nileshgule/coremvc
     depends_on: 
       - corewebapi
     ports:
       - "80:80"
   
   corewebapi:
-    # image: nileshgule/corewebapi:${BUILD_BUILDID}
-    image: nileshgule/corewebapi
+    image: nileshgule/corewebapi:${BUILD_BUILDID}
+    # image: nileshgule/corewebapi
     ports:
       - "8080:8080"
   
