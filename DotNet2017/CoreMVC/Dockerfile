@@ -2,7 +2,6 @@ FROM microsoft/aspnetcore-build AS build-env
 
 WORKDIR /MyFirstMvcCoreApp
 
-# COPY *.csproj ./
 COPY CoreMVC.csproj ./
 COPY NuGet.config ./
 RUN dotnet restore
@@ -10,7 +9,7 @@ RUN dotnet restore
 COPY . ./
 RUN dotnet publish --configuration Release --output releaseOutput --no-restore
 
-#build runtime image
+#run test using container
 # Homework for attendees 
 
 #build runtime image

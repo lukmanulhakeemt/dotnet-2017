@@ -2,7 +2,6 @@ FROM microsoft/aspnetcore-build AS build-env
 
 WORKDIR /MyFirstCoreWebApi
 
-# COPY *.csproj ./
 COPY CoreWebAPI.csproj ./
 COPY NuGet.config ./
 RUN dotnet restore
