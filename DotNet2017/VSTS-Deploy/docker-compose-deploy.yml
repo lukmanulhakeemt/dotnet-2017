@@ -9,10 +9,10 @@ services:
       - "1433:1433"
     tty: true
     
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 3G
+    deploy:
+      resources:
+        limits:
+          memory: 3G
 
   coremvc:
     image: nileshgule/coremvc:${BUILD_BUILDID}
@@ -22,7 +22,7 @@ services:
       - "80:80"
     
     deploy:
-      replicas: 1
+      replicas: 2
       update_config:
         parallelism: 1
         delay: 5s
