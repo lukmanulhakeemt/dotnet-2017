@@ -5,8 +5,10 @@ services:
     image: nileshgule/sqldb
     volumes:
       - mssql-server-linux-data:/var/opt/mssql/data
+    
     hostname: 'sql2017'
     container_name: sql2017
+    
     build:
       context: ./Database
       dockerfile: Dockerfile
@@ -17,9 +19,11 @@ services:
   coremvc:
     image: nileshgule/coremvc
     container_name: coremvc
+    
     build:
       context: ./CoreMVC
       dockerfile: Dockerfile
+    
     depends_on: 
       - corewebapi
     ports:
@@ -28,11 +32,14 @@ services:
   corewebapi:
     image: nileshgule/corewebapi
     container_name: corewebapi
+    
     build:
       context: ./CoreWebAPI
       dockerfile: Dockerfile
+    
     depends_on:
       - sql2017
+    
     ports:
       - "8080:8080"
 
