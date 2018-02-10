@@ -35,7 +35,7 @@
         "nameSuffix": {
             "value": "coredemo"
         },
-        "Docker-sta": {
+        "sshRSAPublicKey": {
             "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/YtmDMaQYp7z9AZb4XjDtA14YS64FjGIfh+AxV+440x4KH7yoJfHYLZdbYc4KP7lnzpbkELZETKvLjFHy4riyN4g6I4CQ/0vY+9LQ6/VZbGrYhgHY0tE3uraMfo33ADrhUMCituGT3dWfWGQCeOSOh0MBY/nryKYSmGfnCIMeh3a5XpUKcIFDYU/toQEwSGCdfbrcNOOSXLk3d0vEGCJlGgR8BvtH1E9uuHWLLd9moOHQRqka481aByQfsS4hNjJHqPAvBbV14BYDLqnqEuFAY5EK3hOTimizNPPGs/Z9OiY9hNbXfSCr6sUK1D4zWM3GKoO5Y6lfWH2yAPJj6ySr nileshgule@NILESHs-MBP"
         },
         "targetEnvironment": {
