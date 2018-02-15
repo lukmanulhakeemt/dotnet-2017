@@ -54,12 +54,22 @@ kubectl get nodes
 
 ```
 
+## Run the application
+
+```bash
+
+kubectl create -f coredemo.yml
+
+```
+
 ## Browse AKS cluster dashboard
 
 ```bash
 
 az aks browse --resource-group k8sResourceGroup \
 --name coreDemoAKSCluster
+
+kubectl get service coremvc --watch
 
 ```
 

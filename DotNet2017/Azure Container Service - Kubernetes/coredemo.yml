@@ -56,23 +56,23 @@ spec:
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
 
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: coremvc
-  # namespace: my-project
-  labels:
-    run: coremvc
-spec:
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
-    nodePort: 31000
-  selector:
-    run: coremvc
-  type: NodePort
+# ---
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: coremvc
+#   # namespace: my-project
+#   labels:
+#     run: coremvc
+# spec:
+#   ports:
+#   - protocol: TCP
+#     port: 80
+#     targetPort: 80
+#     nodePort: 31000
+#   selector:
+#     run: coremvc
+#   type: NodePort
 ---
 kind: Service
 apiVersion: v1
@@ -95,10 +95,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: coremvc-front
+  name: coremvc
 spec:
   type: LoadBalancer
   ports:
   - port: 80
   selector:
-    app: coremvc-front
+    app: coremvc
