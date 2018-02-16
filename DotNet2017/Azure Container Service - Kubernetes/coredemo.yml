@@ -15,6 +15,7 @@ spec:
     metadata:
       labels:
         run: coremvc
+        app: coremvc
     spec:
       containers:
       - name: coremvc

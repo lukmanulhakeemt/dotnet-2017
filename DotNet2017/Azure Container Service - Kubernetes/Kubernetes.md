@@ -16,7 +16,7 @@ az provider show -n Microsoft.ContainerService
 
 ```
 
-## Create Resource Group 
+## Create Resource Group
 
 ```bash
 
@@ -62,14 +62,20 @@ kubectl create -f coredemo.yml
 
 ```
 
+## Monitor the progress of service
+
+```bash
+
+kubectl get service coremvc --watch
+
+```
+
 ## Browse AKS cluster dashboard
 
 ```bash
 
 az aks browse --resource-group k8sResourceGroup \
 --name coreDemoAKSCluster
-
-kubectl get service coremvc --watch
 
 ```
 
