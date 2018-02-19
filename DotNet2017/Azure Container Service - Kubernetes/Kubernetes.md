@@ -79,6 +79,14 @@ az aks browse --resource-group k8sResourceGroup \
 
 ```
 
+## Get persistant volume details
+
+```bash
+
+kubectl get pv mssql-data
+
+```
+
 ## Delete resource group
 
 ```bash
