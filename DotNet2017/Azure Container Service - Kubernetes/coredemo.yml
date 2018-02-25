@@ -105,30 +105,6 @@ spec:
     app: coremvc
 
 ---
-kind: StorageClass
-apiVersion: storage.k8s.io/v1beta1
-metadata:
-     name: azure-disk
-provisioner: kubernetes.io/azure-disk
-parameters:
-  storageaccounttype: Standard_LRS
-  kind: Managed
-
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: mssql-data
-  annotations:
-    volume.beta.kubernetes.io/storage-class: azure-disk
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-
----
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -158,7 +134,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mssql-deployment
+  # name: mssql-deployment
+  name: sql2017
 spec:
   selector:
     app: sql2017

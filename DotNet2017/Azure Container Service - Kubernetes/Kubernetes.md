@@ -1,5 +1,13 @@
 # Commands related to Azure Container Service (AKS)
 
+## Set Azure CLI in interactive mode
+
+```bash
+
+az interactive
+
+```
+
 ## Enable AKS preview for subscription
 
 ```bash
@@ -16,13 +24,24 @@ az provider show -n Microsoft.ContainerService
 
 ```
 
+## Variables for the azure CLI script
+
+```bash
+
+resourceGroupName="k8sResourceGroup"
+resourceGroupLocaltion="East US"
+clusterName="coreDemoAKSCluster"
+
+```
+
 ## Create Resource Group
 
 ```bash
 
 az group create \
---name k8sResourceGroup \
---location "East US"
+--name $resourceGroupName \
+--location $resourceGroupLocaltion \
+--output jsonc
 
 ```
 
@@ -30,10 +49,13 @@ az group create \
 
 ```bash
 
+time \
 az aks create \
---resource-group k8sResourceGroup \
---name coreDemoAKSCluster \
---node-count 2
+--resource-group $resourceGroupName \
+--name $clusterName \
+--node-count 2 \
+--kubernetes-version 1.8.1 \
+--output jsonc
 
 ```
 
@@ -41,8 +63,9 @@ az aks create \
 
 ```bash
 
-az aks get-credentials --resource-group k8sResourceGroup \
---name coreDemoAKSCluster
+az aks get-credentials \
+--resource-group $resourceGroupName \
+--name $clusterName
 
 ```
 
@@ -51,6 +74,61 @@ az aks get-credentials --resource-group k8sResourceGroup \
 ```bash
 
 kubectl get nodes
+
+```
+
+## Get cluster versions
+
+```bash
+
+az aks get-upgrades \
+--name $clusterName \
+--resource-group $resourceGroupName \
+--output jsonc
+
+```
+
+## Upgrade cluster to 1.8.1 version (if required)
+
+```bash
+
+az aks upgrade \
+--name $clusterName \
+--resource-group $resourceGroupName \
+--kubernetes-version 1.8.1 \
+--output jsonc
+
+```
+
+## Create persistent volume claim in Kubernetes
+
+### Create Azure disk as persistent volume and persistent volume claim named `mssql-data`
+
+```bash
+
+kubectl create secret generic mssql --from-literal=SA_PASSWORD="MyC0m9l&xP@ssw0rd"
+
+kubectl apply -f pvc.yml
+
+kubectl describe pod mssql-deployment-69d56b9996-jthjw
+
+```
+
+### Verify persistent volume claim `mssql-data`
+
+```bash
+
+kubectl describe pvc mssql-data
+
+```
+
+### Verify persistent volume
+
+```bash
+
+kubectl describe pv
+
+kubectl apply -f sqldeployment.yml
 
 ```
 
@@ -74,8 +152,9 @@ kubectl get service coremvc --watch
 
 ```bash
 
-az aks browse --resource-group k8sResourceGroup \
---name coreDemoAKSCluster
+az aks browse \
+--resource-group $resourceGroupName \
+--name $clusterName
 
 ```
 
@@ -91,6 +170,9 @@ kubectl get pv mssql-data
 
 ```bash
 
-az group delete --name k8sResourceGroup --yes --no-wait
+az group delete \
+--name $resourceGroupName \
+--yes \
+--no-wait
 
 ```
