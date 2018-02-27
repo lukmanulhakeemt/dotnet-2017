@@ -107,6 +107,7 @@ az aks upgrade \
 ```bash
 
 kubectl create secret generic mssql --from-literal=SA_PASSWORD="January2018"
+kubectl create secret generic mssql --from-literal=SA_PASSWORD="MyC0m9l&xP@ssw0rd"
 
 ```
 

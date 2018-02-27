@@ -120,6 +120,7 @@ spec:
       containers:
       - name: sql2017
         image: nileshgule/sqldb
+        # image: microsoft/mssql-server-linux
         ports:
         - containerPort: 1433
         env:
