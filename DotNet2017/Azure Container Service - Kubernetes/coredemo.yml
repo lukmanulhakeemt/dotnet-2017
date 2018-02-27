@@ -122,6 +122,16 @@ spec:
         image: nileshgule/sqldb
         ports:
         - containerPort: 1433
+        env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: SA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mssql
+              key: SA_PASSWORD 
+        - name: MSSQL_PID
+          value: Developer
         volumeMounts:
         - name: mssqldb
           mountPath: /var/opt/mssql
@@ -134,8 +144,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  # name: mssql-deployment
-  name: sql2017
+  name: mssql-deployment
+  # name: sql2017
 spec:
   selector:
     app: sql2017

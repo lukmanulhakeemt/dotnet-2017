@@ -102,11 +102,33 @@ az aks upgrade \
 
 ## Create persistent volume claim in Kubernetes
 
-### Create Azure disk as persistent volume and persistent volume claim named `mssql-data`
+### Create a secret for SA password
 
 ```bash
 
-kubectl create secret generic mssql --from-literal=SA_PASSWORD="MyC0m9l&xP@ssw0rd"
+kubectl create secret generic mssql --from-literal=SA_PASSWORD="January2018"
+
+```
+
+### Get secret
+
+```bash
+
+kubectl get secrets
+
+```
+
+### Describe secret named mssql
+
+```bash
+
+kubectl describe secrets/mssql
+
+```
+
+### Create Azure disk as persistent volume and persistent volume claim named `mssql-data`
+
+```bash
 
 kubectl apply -f pvc.yml
 
