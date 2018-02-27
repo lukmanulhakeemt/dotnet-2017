@@ -116,7 +116,7 @@ spec:
       labels:
         app: sql2017
     spec:
-      terminationGracePeriodSeconds: 10
+      terminationGracePeriodSeconds: 60
       containers:
       - name: sql2017
         image: nileshgule/sqldb
