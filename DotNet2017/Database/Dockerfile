@@ -15,4 +15,4 @@ COPY initialize-database.sql ./
 # RUN chmod +x ./setup-database.sh
 # RUN chmod +x ./entrypoint.sh
 
-CMD bash ./entrypoint.sh
+# CMD bash ./entrypoint.sh

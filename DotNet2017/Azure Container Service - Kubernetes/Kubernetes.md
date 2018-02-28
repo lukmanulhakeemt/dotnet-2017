@@ -201,3 +201,12 @@ az group delete \
 --no-wait
 
 ```
+
+## Connect to SQL DB using sql-tools image
+
+```bash
+
+docker run -it nileshgule/sqlclient
+
+sqlcmd -U someuser -P s0mep@ssword -z a_new_p@a$$w0rd
+```

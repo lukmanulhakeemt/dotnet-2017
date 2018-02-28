@@ -51,6 +51,7 @@ spec:
           image: nileshgule/sqlclient
           # command: ['sh', '-c', "/opt/mssql-tools/bin/sqlcmd -S mssql-deployment -U sa -P 'MyC0m9l&xP@ssw0rd' -d master -i initialize-database.sql"]
           command: ['sh', '-c', "sqlcmd -S mssql-deployment -U sa -P 'MyC0m9l&xP@ssw0rd' -d master -i /src/initialize-database.sql"]
+          # command: ['sqlcmd', "-S mssql-deployment -U sa -P 'MyC0m9l&xP@ssw0rd' -d master -i /src/initialize-database.sql"]
           # command: ['sh', '-c', 'until nslookup myservice; do echo waiting for myservice; sleep 2; done;']
       containers:
       - name: corewebapi
@@ -129,7 +130,18 @@ spec:
         image: microsoft/mssql-server-linux
         # command: ["/opt/mssql/bin/sqlservr"]
         ports:
-        - containerPort: 1433
+        - name: dbport
+          containerPort: 1433
+        livenessProbe:
+          tcpSocket:
+            port: dbport
+          initialDelaySeconds: 20
+          periodSeconds: 15
+        readinessProbe:
+            tcpSocket:
+              port: dbport
+            initialDelaySeconds: 20
+            periodSeconds: 15
         env:
         - name: ACCEPT_EULA
           value: "Y"
