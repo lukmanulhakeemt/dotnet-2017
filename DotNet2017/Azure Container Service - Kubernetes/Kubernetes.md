@@ -208,5 +208,6 @@ az group delete \
 
 docker run -it nileshgule/sqlclient
 
-sqlcmd -U someuser -P s0mep@ssword -z a_new_p@a$$w0rd
+sqlcmd -S 13.90.224.43,1433 -U sa -P 'MyC0m9l&xP@ssw0rd' -d master -i initialize-database.sql
+
 ```
