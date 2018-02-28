@@ -2,7 +2,8 @@ version: '3'
 
 services:
   sql2017:
-    image: nileshgule/sqldb
+    # image: nileshgule/sqldb
+    image: nileshgule/sqlclient
     # volumes:
     #   - mssql-server-linux-data:/var/opt/mssql/data
     
@@ -12,9 +13,9 @@ services:
     build:
       context: ./Database
       dockerfile: Dockerfile
-    ports:
-      - "1433:1433"
-    tty: true
+    # ports:
+    #   - "1433:1433"
+    # tty: true
   
   coremvc:
     image: nileshgule/coremvc

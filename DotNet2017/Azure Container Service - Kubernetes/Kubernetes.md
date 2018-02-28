@@ -169,6 +169,8 @@ kubectl create -f coredemo.yml
 
 kubectl get service coremvc --watch
 
+kubectl get service mssql-deployment --watch
+
 ```
 
 ## Browse AKS cluster dashboard

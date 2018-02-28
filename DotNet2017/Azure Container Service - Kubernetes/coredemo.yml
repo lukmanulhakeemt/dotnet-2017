@@ -46,6 +46,12 @@ spec:
       labels:
         run: corewebapi
     spec:
+      initContainers:
+        - name: init-myservice
+          image: nileshgule/sqlclient
+          # command: ['sh', '-c', "/opt/mssql-tools/bin/sqlcmd -S mssql-deployment -U sa -P 'MyC0m9l&xP@ssw0rd' -d master -i initialize-database.sql"]
+          command: ['sh', '-c', "sqlcmd -S mssql-deployment -U sa -P 'MyC0m9l&xP@ssw0rd' -d master -i initialize-database.sql"]
+          # command: ['sh', '-c', 'until nslookup myservice; do echo waiting for myservice; sleep 2; done;']
       containers:
       - name: corewebapi
         image: nileshgule/corewebapi
@@ -116,11 +122,12 @@ spec:
       labels:
         app: sql2017
     spec:
-      terminationGracePeriodSeconds: 60
+      terminationGracePeriodSeconds: 10
       containers:
       - name: sql2017
         image: nileshgule/sqldb
         # image: microsoft/mssql-server-linux
+        command: ["/opt/mssql/bin/sqlservr"]
         ports:
         - containerPort: 1433
         env:
