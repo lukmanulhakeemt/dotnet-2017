@@ -211,3 +211,5 @@ docker run -it nileshgule/sqlclient
 sqlcmd -S 13.90.224.43,1433 -U sa -P 'MyC0m9l&xP@ssw0rd' -d master -i initialize-database.sql
 
 ```
+
+Replace the ip of the server with the correct ip based on deployment status of mssql-deployment service.
