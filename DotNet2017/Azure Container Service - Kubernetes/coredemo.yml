@@ -49,7 +49,7 @@ spec:
       initContainers:
         - name: init-myservice
           image: nileshgule/sqlclient
-          command: ['sh', '-c', "/opt/mssql-tools/bin/sqlcmd -S mssql-deployment -U sa -P 'MyC0m9l&xP@ssw0rd' -d master -i initialize-database.sql"]
+          command: ['sh', '-c', "/opt/mssql-tools/bin/sqlcmd -S mssql-deployment -U sa -P January2018 -d master -i initialize-database.sql"]
           # command: ['bash', '-c', "sqlcmd -S mssql-deployment -U sa -P 'MyC0m9l&xP@ssw0rd' -d master -i initialize-database.sql"]
           # command: ['sqlcmd', "-S mssql-deployment -U sa -P 'MyC0m9l&xP@ssw0rd' -d master -i /src/initialize-database.sql"]
           # command: ['sh', '-c', 'until nslookup myservice; do echo waiting for myservice; sleep 2; done;']
