@@ -1,32 +1,32 @@
----
-kind: Deployment
-apiVersion: apps/v1beta1
-metadata:
-  name: coremvc
-  # namespace: my-project
-  labels:
-    run: coremvc
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      run: coremvc
-  template:
-    metadata:
-      labels:
-        run: coremvc
-        app: coremvc
-    spec:
-      containers:
-      - name: coremvc
-        image: nileshgule/coremvc
-        ports:
-        - containerPort: 80
-          protocol: TCP
-        imagePullPolicy: IfNotPresent
-      restartPolicy: Always
-      terminationGracePeriodSeconds: 30
-      dnsPolicy: ClusterFirst
+# ---
+# kind: Deployment
+# apiVersion: apps/v1beta1
+# metadata:
+#   name: coremvc
+#   # namespace: my-project
+#   labels:
+#     run: coremvc
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       run: coremvc
+#   template:
+#     metadata:
+#       labels:
+#         run: coremvc
+#         app: coremvc
+#     spec:
+#       containers:
+#       - name: coremvc
+#         image: nileshgule/coremvc
+#         ports:
+#         - containerPort: 80
+#           protocol: TCP
+#         imagePullPolicy: IfNotPresent
+#       restartPolicy: Always
+#       terminationGracePeriodSeconds: 30
+#       dnsPolicy: ClusterFirst
 
 ---
 kind: Deployment
@@ -50,14 +50,15 @@ spec:
         - name: init-myservice
           image: nileshgule/sqlclient
           command: ['sh', '-c', "/opt/mssql-tools/bin/sqlcmd -S mssql-deployment -U sa -P January2018 -d master -i initialize-database.sql"]
-          # command: ['bash', '-c', "sqlcmd -S mssql-deployment -U sa -P 'MyC0m9l&xP@ssw0rd' -d master -i initialize-database.sql"]
-          # command: ['sqlcmd', "-S mssql-deployment -U sa -P 'MyC0m9l&xP@ssw0rd' -d master -i /src/initialize-database.sql"]
-          # command: ['sh', '-c', 'until nslookup myservice; do echo waiting for myservice; sleep 2; done;']
+          # command:
+          #   - 'sh'
+          #   - '-c'
+          #   - "/opt/mssql-tools/bin/sqlcmd -S mssql-deployment -U sa -P January2018 -d master -i initialize-database.sql"]
       containers:
       - name: corewebapi
         image: nileshgule/corewebapi
         ports:
-        - containerPort: 8080
+        - containerPort: 80
           protocol: TCP
         imagePullPolicy: IfNotPresent
       restartPolicy: Always
@@ -81,35 +82,47 @@ spec:
 #   selector:
 #     run: coremvc
 #   type: NodePort
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: corewebapi
-  # namespace: my-project
-  labels:
-    run: corewebapi
-spec:
-  ports:
-  - protocol: TCP
-    port: 8080
-    targetPort: 8080
-    nodePort: 31001
-  selector:
-    run: corewebapi
-  type: NodePort
+# ---
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: corewebapi
+#   # namespace: my-project
+#   labels:
+#     run: corewebapi
+# spec:
+#   ports:
+#   - protocol: TCP
+#     port: 8080
+#     targetPort: 8080
+#     nodePort: 31001
+#   selector:
+#     run: corewebapi
+#   type: NodePort
+
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: coremvc
+# spec:
+#   type: LoadBalancer
+#   ports:
+#   - port: 80
+#   selector:
+#     app: coremvc
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: coremvc
+  name: corewebapi
 spec:
   type: LoadBalancer
   ports:
   - port: 80
   selector:
-    app: coremvc
+    app: corewebapi
 
 ---
 apiVersion: apps/v1beta1
@@ -146,10 +159,11 @@ spec:
         - name: ACCEPT_EULA
           value: "Y"
         - name: SA_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mssql
-              key: SA_PASSWORD 
+          value: January2018
+          # valueFrom:
+          #   secretKeyRef:
+          #     name: mssql
+          #     key: SA_PASSWORD
         - name: MSSQL_PID
           value: Developer
         volumeMounts:
