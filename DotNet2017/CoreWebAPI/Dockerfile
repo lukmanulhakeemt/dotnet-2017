@@ -16,6 +16,6 @@ WORKDIR /MyFirstCoreWebApi
 
 COPY --from=build-env /MyFirstCoreWebApi/releaseOutput ./
 
-EXPOSE 80
+EXPOSE 8080
 
 ENTRYPOINT ["dotnet", "CoreWebAPI.dll"]

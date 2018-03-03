@@ -1,32 +1,32 @@
-# ---
-# kind: Deployment
-# apiVersion: apps/v1beta1
-# metadata:
-#   name: coremvc
-#   # namespace: my-project
-#   labels:
-#     run: coremvc
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       run: coremvc
-#   template:
-#     metadata:
-#       labels:
-#         run: coremvc
-#         app: coremvc
-#     spec:
-#       containers:
-#       - name: coremvc
-#         image: nileshgule/coremvc
-#         ports:
-#         - containerPort: 80
-#           protocol: TCP
-#         imagePullPolicy: IfNotPresent
-#       restartPolicy: Always
-#       terminationGracePeriodSeconds: 30
-#       dnsPolicy: ClusterFirst
+---
+kind: Deployment
+apiVersion: apps/v1beta1
+metadata:
+  name: coremvc
+  # namespace: my-project
+  labels:
+    run: coremvc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: coremvc
+  template:
+    metadata:
+      labels:
+        run: coremvc
+        app: coremvc
+    spec:
+      containers:
+      - name: coremvc
+        image: nileshgule/coremvc
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
 
 ---
 kind: Deployment
@@ -58,7 +58,7 @@ spec:
       - name: corewebapi
         image: nileshgule/corewebapi
         ports:
-        - containerPort: 80
+        - containerPort: 8080
           protocol: TCP
         imagePullPolicy: IfNotPresent
       restartPolicy: Always
@@ -100,17 +100,17 @@ spec:
 #     run: corewebapi
 #   type: NodePort
 
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: coremvc
-# spec:
-#   type: LoadBalancer
-#   ports:
-#   - port: 80
-#   selector:
-#     app: coremvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: coremvc
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: coremvc
 
 ---
 apiVersion: v1
@@ -120,9 +120,9 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 80
+  - port: 8080
   selector:
-    app: corewebapi
+    run: corewebapi
 
 ---
 apiVersion: apps/v1beta1
