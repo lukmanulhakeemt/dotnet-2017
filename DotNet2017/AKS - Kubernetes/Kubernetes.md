@@ -212,5 +212,6 @@ sqlcmd -S 13.90.224.43,1433 -U sa -P 'MyC0m9l&xP@ssw0rd' -d master -i initialize
 
 Replace the ip of the server with the correct ip based on deployment status of mssql-deployment service.
 
-ssh azureuser@52.168.161.253 
+Run kubernetes apply recursively
+kubectl apply -R -f.
  
