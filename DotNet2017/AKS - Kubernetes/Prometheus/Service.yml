@@ -4,7 +4,8 @@ metadata:
   name: prometheus
   namespace: monitoring
 spec:
-  type: ClusterIP
+  # type: ClusterIP
+  type: LoadBalancer
   selector:
     name: prometheus
     phase: prod
