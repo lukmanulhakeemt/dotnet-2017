@@ -12,7 +12,7 @@ az interactive
 
 ```bash
 
-az provider show -n Microsoft.ContainerService
+az provider register -n Microsoft.ContainerService
 
 ```
 
@@ -31,6 +31,14 @@ az provider show -n Microsoft.ContainerService
 resourceGroupName="k8sResourceGroup"
 resourceGroupLocaltion="East US"
 clusterName="coreDemoAKSCluster"
+
+```
+
+## Intsall kubectl CLI
+
+```bash
+
+az aks install-cli
 
 ```
 
