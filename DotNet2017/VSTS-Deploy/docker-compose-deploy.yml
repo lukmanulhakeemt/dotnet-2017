@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  sql2017:
+    image: nileshgule/sqldb:${BUILD_BUILDID}
+    volumes:
+      - mssql-server-linux-data:/var/opt/mssql/data
+    ports:
+      - "1433:1433"
+    tty: true
+    
+    deploy:
+      resources:
+        limits:
+          memory: 3G
+
+  coremvc:
+    image: nileshgule/coremvc:${BUILD_BUILDID}
+    depends_on: 
+      - corewebapi
+    ports:
+      - "80:80"
+    
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 5s
+  
+  corewebapi:
+    image: nileshgule/corewebapi:${BUILD_BUILDID}
+    ports:
+      - "8080:8080"
+    
+    deploy:
+      restart_policy:
+          condition: on-failure
+          delay: 10s
+          max_attempts: 3
+          window: 120s
+  
+volumes:
+  mssql-server-linux-data:

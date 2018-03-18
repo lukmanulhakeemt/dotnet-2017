@@ -1,0 +1,31 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+
+metadata:
+  name: coremvc
+  # namespace: my-project
+  labels:
+    run: coremvc
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: coremvc
+  
+  template:
+    metadata:
+      labels:
+        run: coremvc
+        app: coremvc
+    spec:
+      containers:
+      - name: coremvc
+        image: nileshgule/coremvc
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst

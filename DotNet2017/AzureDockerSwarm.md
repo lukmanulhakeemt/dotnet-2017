@@ -66,6 +66,8 @@ docker-compose -f docker-compose-build.yml up -d
 
 Use `docker.for.mac.localhost` property to access webapi [http://docker.for.mac.localhost:8080/api/KeyValue](http://docker.for.mac.localhost:8080/api/KeyValue)
 
+If you are using Docker 17.12 (January 2018) version or higher, Use `docker.for.mac.host.internal` property to access webapi [http://docker.for.mac.host.internal:8080/api/KeyValue](http://docker.for.mac.host.internal:8080/api/KeyValue)
+
 Alternatively, special ip `192.168.65.1` can be used as well instead of `docker.for.mac.localhost`
 [http://192.168.65.1:8080/api/KeyValue](http://192.168.65.1:8080/api/KeyValue)
 

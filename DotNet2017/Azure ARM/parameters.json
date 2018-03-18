@@ -1,0 +1,45 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "agentCount": {
+            "value": 2
+        },
+        "agentEndpointDNSNamePrefix": {
+            "value": "swarmagent"
+        },
+        "agentSubnet": {
+            "value": "10.0.0.0/16"
+        },
+        "agentVMSize": {
+            "value": "Standard_D2_v2"
+        },
+        "firstConsecutiveStaticIP": {
+            "value": "172.16.0.5"
+        },
+        "linuxAdminUsername": {
+            "value": "swarmadmin"
+        },
+        "location": {
+            "value": "Southeast Asia"
+        },
+        "masterEndpointDNSNamePrefix": {
+            "value": "swarmmaster"
+        },
+        "masterSubnet": {
+            "value": "172.16.0.0/24"
+        },
+        "masterVMSize": {
+            "value": "Standard_D2_v2"
+        },
+        "nameSuffix": {
+            "value": "coredemo"
+        },
+        "sshRSAPublicKey": {
+            "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/YtmDMaQYp7z9AZb4XjDtA14YS64FjGIfh+AxV+440x4KH7yoJfHYLZdbYc4KP7lnzpbkELZETKvLjFHy4riyN4g6I4CQ/0vY+9LQ6/VZbGrYhgHY0tE3uraMfo33ADrhUMCituGT3dWfWGQCeOSOh0MBY/nryKYSmGfnCIMeh3a5XpUKcIFDYU/toQEwSGCdfbrcNOOSXLk3d0vEGCJlGgR8BvtH1E9uuHWLLd9moOHQRqka481aByQfsS4hNjJHqPAvBbV14BYDLqnqEuFAY5EK3hOTimizNPPGs/Z9OiY9hNbXfSCr6sUK1D4zWM3GKoO5Y6lfWH2yAPJj6ySr nileshgule@NILESHs-MBP"
+        },
+        "targetEnvironment": {
+            "value": "AzureCloud"
+        }
+    }
+}
