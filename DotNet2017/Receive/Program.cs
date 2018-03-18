@@ -12,7 +12,7 @@ namespace receive
             Console.WriteLine("Receiver started!!!");
             
             // var factory = new ConnectionFactory() { HostName = "localhost" };
-            var factory = new ConnectionFactory() { HostName = "rabbit" };
+            var factory = new ConnectionFactory() { HostName = "rabbitmq" };
             
             
             using (var connection = factory.CreateConnection())

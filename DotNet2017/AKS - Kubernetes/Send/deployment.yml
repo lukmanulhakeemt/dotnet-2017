@@ -1,0 +1,28 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+
+metadata:
+  name: rabbitmq-producer
+  # namespace: my-project
+  labels:
+    run: rabbitmq-producer
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: rabbitmq-producer
+  
+  template:
+    metadata:
+      labels:
+        run: rabbitmq-producer
+        app: rabbitmq-producer
+    spec:
+      containers:
+      - name: rabbitmq-producer
+        image: nileshgule/send
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
