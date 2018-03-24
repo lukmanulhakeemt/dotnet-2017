@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  rabbit:
+    image: rabbitmq:3-management
+    # container_name: rabbit
+    ports:
+      - 5672:5672
+      - 8080:15672
+    # hostname: my-rabbit
+
+  send:
+    build:
+      context: ./Send
+      dockerfile: Dockerfile
+    image: nileshgule/send
+    depends_on: 
+      - rabbit
+    restart: always
+    
+  
+  receive:
+    build:
+      context: ./Receive
+      dockerfile: Dockerfile
+    image: nileshgule/receive
+    depends_on: 
+      - rabbit
+    restart: always
+
+  # start_dependencies:
+  #   image: dadarek/wait-for-dependencies
+  #   depends_on:
+  #     - rabbit
+  #   command: rabbit:5672

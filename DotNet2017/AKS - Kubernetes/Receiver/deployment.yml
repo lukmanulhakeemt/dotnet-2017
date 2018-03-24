@@ -2,29 +2,27 @@ apiVersion: apps/v1beta1
 kind: Deployment
 
 metadata:
-  name: coremvc
+  name: rabbitmq-consumer
   # namespace: my-project
   labels:
-    run: coremvc
+    run: rabbitmq-consumer
 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      run: coremvc
+      run: rabbitmq-consumer
   
   template:
     metadata:
       labels:
-        run: coremvc
+        run: rabbitmq-consumer
+        app: rabbitmq-consumer
     spec:
       containers:
-      - name: coremvc
-        image: nileshgule/coremvc
-        ports:
-        - containerPort: 80
-          protocol: TCP
-        imagePullPolicy: IfNotPresent
+      - name: rabbitmq-consumer
+        image: nileshgule/receive
+        imagePullPolicy: Always
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
