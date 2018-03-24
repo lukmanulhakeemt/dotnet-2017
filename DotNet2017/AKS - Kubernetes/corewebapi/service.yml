@@ -5,7 +5,8 @@ metadata:
   name: corewebapi
 
 spec:
-  type: NodePort
+  # type: NodePort
+  type: LoadBalancer
   ports:
   - port: 8080
   selector:

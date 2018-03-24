@@ -33,7 +33,7 @@ namespace Send
                     Console.WriteLine(" [x] Sent {0}", message);
                 }
 
-                Console.WriteLine(" Exiting producer");
+                // Console.WriteLine(" Exiting producer");
             }
         }
     }

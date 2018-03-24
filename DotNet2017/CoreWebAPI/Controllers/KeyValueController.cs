@@ -58,6 +58,35 @@ namespace CoreWebAPI.Controllers
             }
             _context.KeyValue.Add(item);
             _context.SaveChanges();
+
+            // Console.WriteLine("Starting RabbitMQ Sender!");
+
+            // var factory = new ConnectionFactory() { HostName = "localhost" };
+            var factory = new ConnectionFactory() { HostName = "rabbitmq" };
+
+            using (var connection = factory.CreateConnection())
+            {
+                using (var channel = connection.CreateModel())
+                {
+                    channel.QueueDeclare(queue: "hello",
+                                 durable: false,
+                                 exclusive: false,
+                                 autoDelete: false,
+                                 arguments: null);
+
+                    string message = "Hello World!" + item;
+                    var body = Encoding.UTF8.GetBytes(message);
+
+                    channel.BasicPublish(exchange: "",
+                                        routingKey: "hello",
+                                        basicProperties: null,
+                                        body: body);
+                    Console.WriteLine(" [x] Sent {0}", message);
+                }
+
+                // Console.WriteLine(" Exiting producer");
+            }
+
             return CreatedAtRoute("GetByKey", new { key = item.Key }, item);
         }
 
