@@ -22,7 +22,7 @@ spec:
       containers:
       - name: rabbitmq-producer
         image: nileshgule/send
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
