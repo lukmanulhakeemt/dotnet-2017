@@ -2,6 +2,7 @@
 using RabbitMQ.Client.Events;
 using System;
 using System.Text;
+using System.Threading;
 
 namespace receive
 {
@@ -39,7 +40,11 @@ namespace receive
                                         consumer: consumer);
 
                     Console.WriteLine(" Press [enter] to exit.");
-                    Console.ReadLine();
+                    // Console.ReadLine();
+                    while (true)
+                    {
+                        Thread.Sleep(1000);
+                    }
                 
                 }
             }
